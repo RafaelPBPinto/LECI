@@ -1,0 +1,29 @@
+1. CPU, Memória, Unidades de I/O
+2. Multiplexers, ALU, Registos internos
+3. endereço da memória onde está armezanado o código da próxima instrução 
+4. Instruction fetch => Instruction decode => Operand fetch => Execute => Store Result
+5. um compilador traduz código de uma linguagem de alto nível para um programa equivalente em código máquina (linguagem assembly)
+6. Assembler traduz as instruções da linguagem assembly em código binário
+7. 32 registos internos
+8. 32 bits
+9. instrução	registo resultado,op1,op2
+10.sra é aritmética e srl é lógica (???)
+11.a.
+   b.
+12.a. usada para imprimir ou ler valores
+   b. $v0
+   c. $a0,$f12
+   d. $v0,$f0
+13.um número que identifica cada registo de memória
+14.gama total de endereços que o CPU consegue referenciar
+15.CPU,Memory,I/O,System Bus (????)
+16.na memória reside ao mesmo tempo informação de natureza variada (código fonte, editor de texto,compilador, programa resultante da compilação)
+17.localização dos operandos, registo destino, próxima instrução
+   Formato1 - OP,Rdest,Rop1,Rop2
+   Formato2 - OP,Reg,EndMemo
+18.Conjunto de técnicas de design de processadores usado para implementar um conjunto de instruções
+19. 3 => Processamento, Transferência de informação, Controlo do fluxo de execução
+20. Register-Memory => operandos das instruções residem registos internos do CPU e na memoria
+    Load-store => operandos das instruções residem registos internos do CPU nunca na memoria
+    MIPS => Load-store
+
