@@ -1,0 +1,14 @@
+oakdecode
+obexctl
+objcopy
+objdump
+oclock
+od
+oem-getlogs
+on_ac_power
+openssl
+openvt
+opldecode
+orca
+orca-dm-wrapper
+os-prober
