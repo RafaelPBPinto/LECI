@@ -6,8 +6,13 @@ public class Ex6 {
     public static void main(String[] args){
         double hours, mins, secs;
         int hh, mm, ss;
-        System.out.print("Tempo em segundos: ");
-        secs = sc.nextInt();
+        do{
+            System.out.print("Tempo em segundos: ");
+            secs = sc.nextInt();
+            if(secs < 0){
+                System.out.println("Valor Invalido! Tempo tem de ser maior que 0.");
+            }
+        }while(secs < 0);
         hours = secs / 3600;
         hh = (int)hours;
         mins = (hours % 1) * 60;

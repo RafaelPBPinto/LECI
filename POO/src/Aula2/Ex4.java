@@ -5,8 +5,13 @@ public class Ex4 {
     public static final Scanner sc = new Scanner(System.in);
     public static void main(String[] args){
         double montante, taxa;
-        System.out.print("Montante (em euros): ");
-        montante = sc.nextDouble();
+        do{
+            System.out.print("Montante (em euros): ");
+            montante = sc.nextDouble();
+            if(montante < 0){
+                System.out.println("Valor Invalido! Montante tem de ser maior que 0.");
+            }
+        }while(montante < 0);
         do{
             System.out.print("Taxa de juro mensal: ");
             taxa = sc.nextDouble();
