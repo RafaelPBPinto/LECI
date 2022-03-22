@@ -1,0 +1,17 @@
+GAS LISTING E1.s 			page 1
+
+
+DEFINED SYMBOLS
+                E1.s:3      *ABS*:000000000000000b READ_CORE_TIMER
+                E1.s:4      *ABS*:000000000000000c RESET_CORE_TIMER
+                E1.s:5      *ABS*:0000000000000003 PUT_CHAR
+                E1.s:6      *ABS*:0000000000000006 PRINT_INT
+                E1.s:10     .text:0000000000000000 main
+                E1.s:46     .text:0000000000000080 delay
+                E1.s:19     .text:0000000000000018 while1
+                E1.s:23     .text:0000000000000020 while2
+                E1.s:34     .text:0000000000000058 continue
+                E1.s:49     .text:0000000000000088 while
+                E1.s:56     .text:00000000000000b0 endw
+
+NO UNDEFINED SYMBOLS
