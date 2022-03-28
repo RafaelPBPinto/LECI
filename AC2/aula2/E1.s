@@ -51,7 +51,7 @@ delay:	li	$v0,RESET_CORE_TIMER	#  resetCoreTimer();
 	
 while:	li	$v0,READ_CORE_TIMER
 	syscall
-	li	$t0,2000000
+	li	$t0,20000
 	mul	$t0,$t0,$a0
 	bge	$v0,$t0,endw		#  while(readCoreTimer() < K * ms); 
 	j	while	

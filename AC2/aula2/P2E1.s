@@ -6,64 +6,83 @@
  	.text
  	.globl main
  	
- main:	li	$t0,0		# cnt1 = 0
- 	li	$t1,0		# cnt5 = 0
- 	li	$t2,0		# cnt10 = 0
+main:	addiu	$sp,$sp,-20			# 100 * 20000 => 10 Hz
+ 	sw	$ra,0($sp)			# cnt10Hz % 10 = 0 => 1 Hz
+ 	sw	$s0,4($sp)			# cnt10Hz % 2  = 0 => 5 Hz
+ 	sw	$s1,8($sp)
+ 	sw	$s2,12($sp)
+ 	sw	$s3,16($sp)
  	
- while1:				# while(1)
- 	li	$v0,RESET_CORE_TIMER 
- 	syscall			# resetCoreTimer();
+ 	li	$s0,0				# int cont1 = 0;
+ 	li	$s1,0				# int cont5 = 0;
+ 	li	$s2,0				# int cont10 = 0;
+ 	li	$s3,100			# int delaytime = 100;
  	
- while2:
- 	li	$v0,READ_CORE_TIMER
- 	syscall
- 	bge	$v0,20000000,endw2	# while(readCoreTimer() < 20000000)
- 	li	$a1,0x0005000A
- 	move	$a0,$t0		
- 	li	$v0,PRINT_INT		
- 	syscall			# printInt(cnt1++, 10 | 5 << 16);
- 	addi	$t0,$t0,1
- 	j	while2
- 	
- endw2: 
- 	li	$a0,' '
- 	li	$v0,PUT_CHAR
- 	syscall			# putChar(' ');
- 	
- while3:
- 	li	$v0,READ_CORE_TIMER
- 	syscall
- 	bge	$v0,4000000,endw3	# while(readCoreTimer() < 4000000)
- 	li	$a1,0x0005000A
- 	move	$a0,$t1		
- 	li	$v0,PRINT_INT		
- 	syscall			# printInt(cnt5++, 10 | 5 << 16);
- 	addi	$t1,$t1,1
- 	j	while3
- 	
- endw3: 
- 	li	$a0,' '
- 	li	$v0,PUT_CHAR
- 	syscall			# putChar(' ');
- 
- while4:
- 	li	$v0,READ_CORE_TIMER
- 	syscall
- 	bge	$v0,2000000,endw2	# while(readCoreTimer() < 2000000)
- 	li	$a1,0x0005000A
- 	move	$a0,$t2		
- 	li	$v0,PRINT_INT		
- 	syscall			# printInt(cnt10++, 10 | 5 << 16);
- 	j	while4
- 	
- endw4: 
- 	li	$a0,'\r'
- 	li	$v0,PUT_CHAR
- 	syscall			# putChar(
- 	
- 	j	while1
- 	
- 	li	$v0,0			# return 0;
- 	jr	$ra			# fim do programa;
- 	
- 	
+loop:						# while(1)
+	li	$a0,'\r'
+	li	$v0,PUT_CHAR
+	syscall
+	
+if1:	rem	$t0,$s3,10			
+	bnez	$t0,if2			# if(cnt10 % 10 == 0)
+	addi	$s0,$s0,1			# cnt1++;
+
+if2:	rem	$t0,$s3,2			
+	bnez	$t0,continue			# if(cnt5 % 10 == 0)
+	addi	$s1,$s1,1			# cnt5++
+	
+continue:
+	addi	$s2,$s2,1			# cnt10++
+	
+	li	$a0,' '		
+	li	$v0,PUT_CHAR
+	syscall				# putChar(' ');
+	
+	move	$a0,$s2
+	li	$a1,0x0005000a
+	li	$v0,PRINT_INT
+	syscall				# printInt(cnt10, ...)
+	
+	li	$a0,' '
+	li	$v0,PUT_CHAR
+	syscall				# printChar(' ')
+	
+	move	$a0,$s1
+	li	$a1,0x0005000a
+	li	$v0,PRINT_INT
+	syscall				# printInt(cnt5, ...)
+	
+	li	$a0,' '
+	li	$v0,PUT_CHAR
+	syscall				# putChar(' ')
+	
+	move	$a0,$s0
+	li	$a1,0x0005000a
+	li	$v0,PRINT_INT
+	syscall				# printInt(cnt1, ...)
+	
+	li	$a0,$s3
+	jal	delay				# delay(delaytime)
+	
+	j	loop
+	
+	li	$v0,0				# return 0;
+	lw	$s3,16($sp)
+	lw	$s2,12($sp)
+	lw	$s1,8($sp)
+	lw	$s0,4($sp)
+	lw	$ra,0($sp)
+	addiu	$sp,$sp,20
+	jr	$ra				# fim do programa
+			
+delay:	li	$v0,RESET_CORE_TIMER		#  resetCoreTimer(); 
+	syscall
+	
+while:	li	$v0,READ_CORE_TIMER
+	syscall
+	li	$t0,20000
+	mul	$t0,$t0,$a0
+	bge	$v0,$t0,endw			#  while(readCoreTimer() < K * ms); 
+	j	while	
+	
+endw:	jr	$ra				# fim da sub-rotina
