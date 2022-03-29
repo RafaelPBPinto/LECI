@@ -1,4 +1,3 @@
-# a) 2 Hz	
 	.data
 	.equ	resetCoreTimer,12
 	.equ	readCoreTimer,11
@@ -22,10 +21,19 @@ main:	li	$t0,0x0000		# v=0
 	andi	$t2,$t2,0xFFFE		# MODIFY RE0 => saida
 	sw	$t2,TRISE($t1)		# WRITE
 	
+	lw	$t2,TRISD($t1)		# READ
+	andi	$t2,$t2,0xFFFE		# MODIFY RD0 => saida
+	sw	$t2,TRISD($t1)		# WRITE
+	
 while:	lw	$t2,LATE($t1)		# READ
 	andi	$t2,$t2,0xFFFE	
 	or	$t2,$t2,$t0		# MODIFY
 	sw	$t2,LATE($t1)		# WRITE
+	
+	lw	$t3,LATD($t1)
+	andi	$t3,$t3,0xFFFE
+	or	$t3,$t3,$t0
+	sw	$t3,LATD($t1)
 	
 	li	$a0,500		
 	jal	delay			# delay(500)
@@ -40,8 +48,7 @@ while:	lw	$t2,LATE($t1)		# READ
 delay:	li	$v0,resetCoreTimer	#  resetCoreTimer(); 
 	syscall
 	
-while1:	
-	li	$v0,readCoreTimer
+while1:	li	$v0,readCoreTimer
 	syscall
 	li	$t6,20000
 	mul	$t6,$t6,$a0
@@ -49,4 +56,3 @@ while1:
 	j	while1	
 	
 endw:	jr	$ra			# fim da sub-rotina
-	

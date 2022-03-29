@@ -23,7 +23,7 @@ while:	lw	$t1,PORTB($t0)		# READ endereço 0xBF886050
 	sw	$t1,PORTB($t0)		# WRITE
 	
 	lw	$t2,LATE($t0)		# READ endereço 0xBF886120
-	andi	$t2,$t2,0xFFFE		# salvaguardar bits mais significativos
+	andi	$t2,$t2,0xFFFE		# isola ultimo bit
 	or	$t2,$t2,$t1		# MODIFY (escrita do ultimo bit d0 PORTB no LATE)
 	sw	$t2,LATE($t0)		# WRITE	
 	j	while
