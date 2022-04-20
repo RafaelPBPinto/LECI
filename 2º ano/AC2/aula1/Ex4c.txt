@@ -1,2 +1,0 @@
-endereço msg: 0x9D0014E0
-endereço main: 0x9D001400

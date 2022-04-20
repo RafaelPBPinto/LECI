@@ -1,1 +1,0 @@
-Como o conjunto dos 3 agricultores lavra 3 ha em 3 dias e trabalha a uma velocidade constante, então por dia lavra 1 ha, logo em 9 dias lavra 9 ha. Em conclusão, são necessários (e são suficientes também) 3 agricultores para lavrar 9 ha de terra em 9 dias.
