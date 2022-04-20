@@ -1,0 +1,7 @@
+/25 => 255.255.255.126 25 bits a 1
+dividir gamma para vários departamentos => ipv4 publico
+
+/30 => ligações ponto a ponto => 2 ips
+
+descrever o endereçamento no relatório (gateways, ips de cada ip) toda informação para 
+meter as redes a funcionar

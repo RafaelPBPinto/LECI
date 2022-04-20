@@ -1,0 +1,11 @@
+Quest. Escolha
+1	B
+2	C
+3	A
+4	A
+5	B
+6	A
+7	C
+8	C
+9	A
+10	C
