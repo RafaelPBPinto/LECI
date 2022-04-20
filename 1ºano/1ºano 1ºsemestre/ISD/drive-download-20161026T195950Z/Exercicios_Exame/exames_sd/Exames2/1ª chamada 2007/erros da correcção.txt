@@ -1,0 +1,3 @@
+a função df/dz está mal
+
+A máquina ASM está mal, há um file com a correcta

@@ -1,0 +1,28 @@
+GAS LISTING EA1b.s 			page 1
+
+
+DEFINED SYMBOLS
+              EA1b.s:6      *ABS*:0000000000000001 UP
+              EA1b.s:7      *ABS*:0000000000000000 DOWN
+              EA1b.s:8      *ABS*:0000000000000002 STOP
+              EA1b.s:9      *ABS*:0000000000000003 RESET
+              EA1b.s:10     *ABS*:0000000000000001 inkey
+              EA1b.s:11     *ABS*:0000000000000003 putChar
+              EA1b.s:12     *ABS*:0000000000000006 printInt
+              EA1b.s:16     .text:0000000000000000 main
+              EA1b.s:25     .text:000000000000001c do
+              EA1b.s:89     .text:0000000000000128 wait
+              EA1b.s:50     .text:0000000000000070 if1
+              EA1b.s:53     .text:0000000000000080 if2
+              EA1b.s:56     .text:0000000000000090 if3
+              EA1b.s:59     .text:00000000000000a0 if4
+              EA1b.s:62     .text:00000000000000b0 if5
+              EA1b.s:67     .text:00000000000000c8 else1
+              EA1b.s:78     .text:00000000000000f8 enddo
+              EA1b.s:72     .text:00000000000000dc else2
+              EA1b.s:75     .text:00000000000000f0 else3
+              EA1b.s:81     .text:000000000000010c end
+              EA1b.s:93     .text:0000000000000138 wait_for
+              EA1b.s:98     .text:000000000000014c wait_endf
+
+NO UNDEFINED SYMBOLS

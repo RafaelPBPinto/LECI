@@ -1,0 +1,9 @@
+Ping		Conectividade	pacotes
+PC1-Sw1	sim			arp
+PC1-SW2	sim			arp e icmp
+PC1-PC3	não			arp request
+PC2-SW1	não			arp request
+PC2-SW2	não			arp request
+PC2-PC3	sim			arp e icmp	
+PC3-PC1	não			arp
+PC3-PC2	sim			arp e icmp

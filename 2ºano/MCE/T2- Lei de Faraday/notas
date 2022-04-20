@@ -1,0 +1,14 @@
+lançamento com norte para cima:
+tensão negativa	|
+			|
+zero			|
+			|
+positiva		|
+			v
+			
+			
+=> Sempre que há uma variação na corrente o LED liga.
+=> No nosso caso é quando o polo norte está virado para o centro da bobina que é gerado corrente.
+=> Porque é que a corrente só aparece descrita no gráfico uma vez?
+=> Qual o sentido das espiras? (saber o sentido da corrente)
+

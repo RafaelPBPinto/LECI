@@ -1,0 +1,36 @@
+		TFTP
+=>serviço de transferência de ficheiros.
+=>client para receber precisa do name e diretorio para guardar
+=>configuração de rede
+
+Runs over UDP 
+port number 69
+5 messages:
+RRQ
+WRQ
+DATA
+ACK
+ERR
+
+		FTP
+=>transfer file to/from remote host
+=> client-server model
+
+Runs over TCP
+port 20 (control connection)
+port 21 (data connection)
+
+cliente precisa de autenticação
+cliente consegue fazer browse dos diretorios
+
+Commands
+Input				Response
+USER <username>		331 Username OK, password re quired
+PASS <password>		
+LIST (files current dir)	125 Data connection already open; transfer strating
+RETR filename (retrieves file) 425 Can't open data connection
+STOR (stores file onto server) 425 Error writing file
+PORT (porto usado para ligação de dados
+
+
+

@@ -1,0 +1,7 @@
+SEM OVERLOAD
+=>quando faz o ping com o pc2 dá destination host unreachable porque já não tem mais endereços nat para usar
+=>após o tempo da NAT timeout é esquecido da tabela das nat translations e já pode fazer outras ligações com os mesmos ips
+
+COM OVERLOAD
+=>com overload vários endereços locais podem usar um mesmo ip global, distinguindo-os pelos portos
+=>
