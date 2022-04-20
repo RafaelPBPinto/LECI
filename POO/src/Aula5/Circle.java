@@ -22,7 +22,7 @@ public class Circle {
 
     public void set(double newRadius){
         assert valid(newRadius): "Invalid radius!";
-        if(valid(radius)){
+        if(valid(newRadius)){
             this.radius = newRadius;
         }else{
             System.out.println("Invalid radius!");

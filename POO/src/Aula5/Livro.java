@@ -13,6 +13,11 @@ public class Livro {
         if(validTipoEmprestimo(newTipoEmprestimo) && validID()){
             this.titulo = newTitulo;
             this.tipoEmprestimo = newTipoEmprestimo;
+            if(newTipoEmprestimo.equals("CONDICIONAL")){
+                this.disponivel = false;
+            }else{
+                this.disponivel = true;
+            }
         }else{
             System.out.println("Parametros invalidos!");
         }
@@ -23,6 +28,7 @@ public class Livro {
         this.id = generateId();
         this.titulo = newTitulo;
         this.tipoEmprestimo = "NORMAL";
+        this.disponivel = true;
         assert validID(): "ID invalido!";
     }
 
@@ -31,7 +37,7 @@ public class Livro {
     }
 
     private boolean validTipoEmprestimo(String tipoEmprestimo){
-        return tipoEmprestimo == "CONDICIONAL" || tipoEmprestimo == "NORMAL";
+        return tipoEmprestimo.equals("CONDICIONAL") || tipoEmprestimo.equals("NORMAL");
     }
 
     private int generateId(){
@@ -55,6 +61,7 @@ public class Livro {
     public void setDisponivel(boolean disponibilidade){
         this.disponivel = disponibilidade;
     }
+    
     public boolean disponivel(){
         return this.disponivel;
     }

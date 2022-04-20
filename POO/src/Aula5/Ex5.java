@@ -1,11 +1,11 @@
 package Aula5;
+import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Ex5 {
     public static final Scanner sc = new Scanner(System.in);
 
-    public static Utilizador novoUtilizador(Vector<Utilizador> alunos){
+    public static Utilizador novoUtilizador(ArrayList<Utilizador> alunos){
         boolean validnmec = true;
         sc.nextLine();
         System.out.print("Nome:");
@@ -29,7 +29,7 @@ public class Ex5 {
         return new Utilizador(newNome, newnMec, newCurso);
     }
 
-    public static void printAlunos(Vector<Utilizador> alunos){
+    public static void printAlunos(ArrayList<Utilizador> alunos){
         System.out.println();
         for(Utilizador aluno : alunos){
             System.out.println(aluno);
@@ -43,7 +43,7 @@ public class Ex5 {
         String newTitulo = sc.nextLine();
         String newTipo;
         if(newTitulo != ""){
-            System.out.print("Tipo de Emprestimo Condicional (s/n)?\n");
+            System.out.print("Tipo de Emprestimo Condicional (s/n)? ");
             String tipo = sc.nextLine();
             if(tipo.charAt(0) == 's' || tipo.charAt(0) == 'S'){
                 newTipo = "CONDICIONAL";
@@ -57,7 +57,7 @@ public class Ex5 {
         return new Livro(newTitulo, newTipo);
     }
 
-    public static void printLivros(Vector<Livro> livros){
+    public static void printLivros(ArrayList<Livro> livros){
         System.out.println();
         for(Livro livro : livros){
             System.out.println(livro);
@@ -65,7 +65,7 @@ public class Ex5 {
         System.out.println();
     }
 
-    public static void requisitarLivro(Vector<Utilizador> alunos, Vector<Livro> livros){
+    public static void requisitarLivro(ArrayList<Utilizador> alunos, ArrayList<Livro> livros){
         System.out.print("nMec: ");
         int nmec = sc.nextInt();
         System.out.print("Livro ID: ");
@@ -96,7 +96,7 @@ public class Ex5 {
         }
     }
 
-    public static void devolverLivro(Vector<Utilizador> alunos, Vector<Livro> livros){
+    public static void devolverLivro(ArrayList<Utilizador> alunos, ArrayList<Livro> livros){
         System.out.print("nMec: ");
         int nmec = sc.nextInt();
         System.out.print("Livro ID: ");
@@ -126,8 +126,8 @@ public class Ex5 {
     }
 
     public static void main(String[] args){
-        Vector<Utilizador> alunos = new Vector<>(100);
-        Vector<Livro> livros = new Vector<>(100);
+        ArrayList<Utilizador> alunos = new ArrayList<>(100);
+        ArrayList<Livro> livros = new ArrayList<>(100);
         int option;
         do{
             System.out.println("1 - inscrever utilizador");

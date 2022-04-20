@@ -1,11 +1,12 @@
 package Aula5;
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Utilizador {
     private String nome;
     private int nMec;
     private String curso;
-    private Vector<Integer> livrosReq = new Vector<>(3);
+    private static ArrayList<Integer> livrosReq = new ArrayList<>(3);
+    private static int countlivrosReq = 0;
 
     public Utilizador(String newNome, int newNMec, String newCurso){
         assert validNMec(newNMec): "nmec invalido!";
@@ -57,8 +58,9 @@ public class Utilizador {
     }
 
     public void requisitarLivro(int id){
-        if( livrosReq.lastElement() == null){
+        if( countlivrosReq < 3){
             livrosReq.add(id);
+            countlivrosReq++;
         }else{
             System.out.println("Aluno tem 3 livros em sua posse!");
         }
@@ -70,6 +72,7 @@ public class Utilizador {
             if(livrosReq.get(i) == id){
                 livrosReq.remove(i);
                 removeu = true;
+                countlivrosReq--;
             }
         }
         if(!removeu){

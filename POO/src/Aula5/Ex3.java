@@ -31,14 +31,22 @@ public class Ex3 {
                         assert countCircle < 10: "MAX CIRCLES!";
                         System.out.print("Radius: ");
                         int radius = sc.nextInt();
-                        circulo[countCircle++] = new Circle(radius);
+                        if(radius > 0){
+                            circulo[countCircle++] = new Circle(radius);
+                        }else{
+                            System.out.println("Invalid Radius!");
+                        }
                     }else if(op1 == 2){
                         assert countRectangle < 10: "MAX RECTANGLE!";
                         System.out.print("Width: ");
                         int width = sc.nextInt();
                         System.out.print("Height: ");
                         int height = sc.nextInt();
-                        retangulo[countRectangle++] = new Rectangle(width, height);
+                        if(width > 0 && height > 0){
+                            retangulo[countRectangle++] = new Rectangle(width, height);
+                        }else{
+                            System.out.println("Invalide width or height!");
+                        }
                     }else if(op1 == 3){
                         assert countTriangle < 10: "MAX TRIANGLES!";
                         System.out.print("a: ");
@@ -47,7 +55,13 @@ public class Ex3 {
                         int b = sc.nextInt();
                         System.out.print("c: ");
                         int c = sc.nextInt();
-                        triangulo[countTriangle++] = new Triangle(a, b, c);
+                        if(a > 0 && b > 0 && c > 0){
+                            if((a < b + c) && (a < b + c) && (a < b + c)){
+                                triangulo[countTriangle++] = new Triangle(a, b, c);
+                            }
+                        }else{
+                            System.out.println("Invalid size!");
+                        }
                     }else{
                         System.out.println("Invalid figure!");
                     }
