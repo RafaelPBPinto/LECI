@@ -1,10 +1,10 @@
 #include <detpic32.h>
 
-// TEMPO DE ATIVAÇÃO = aproximadamente 100 ms (1 quadrado = 50 ms)
+// TEMPO DE ATIVAÇÃO = aproximadamente 3,5 * 10^-6 s 
 int main(void){
 	volatile int aux;
 	// Configuração das entradas analógicas //
-	TRISDbits.TRISD11 = 1;		// RD11 digital output disconnected
+	TRISBbits.TRISB4 = 1;		// RD11 digital output disconnected
 	AD1PCFGbits.PCFG4 = 0;		// RB4 configured as a analog input (AN4)
 	
 	// Seleção do canal de entrada //
@@ -23,7 +23,7 @@ int main(void){
 	AD1CON2bits.SMPI = 1 - 1;	// Interrupt is generated after 1 samples
 	
 	AD1CON1bits.ON = 1;		// Enable A/D converter
-	
+	TRISDbits.TRISD11 = 0;	// RD11 => output
 	while(1){
 		LATDbits.LATD11 = 1;	// Set LATD11
 		
@@ -32,7 +32,6 @@ int main(void){
 		
 		LATDbits.LATD11 = 0;	// Reset LATD11
 		aux = ADC1BUF0;
-		printInt(aux, 16 | 3 << 16); 
 		IFS1bits.AD1IF = 0;	// Reset AD1IF (LATD11=0)
 	}
 	return 0;

@@ -61,7 +61,7 @@ int main(void){
 			for(; p <= (int *)(&ADC1BUF3); p+=4 ){
 				media += *p;
 			}
-			IFS1bits.AD1IF = 0;	// Reset AD1IF (LATD11=0)
+			IFS1bits.AD1IF = 0;	// Reset AD1IF 
 			media = media/4;
 			amplitude = (media * 33 + 511) / 1023;
 		}
