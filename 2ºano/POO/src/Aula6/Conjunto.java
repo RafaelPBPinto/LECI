@@ -10,7 +10,7 @@ public class Conjunto {
         }
     }
 
-    public int get(int pos){
+    private int get(int pos){
         return array.get(pos);
     }
 
