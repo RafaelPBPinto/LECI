@@ -1,0 +1,67 @@
+May 16 17:37:32.798 HYPERVISOR: Release 0.2.17-x86/Windows (tag 2017072410)
+May 16 17:37:32.798 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50399.
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: hypervisor version 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\dynamips 
+May 16 17:37:33.314 GENERAL: working_dir=C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\dynamips
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: hypervisor working_dir C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\dynamips\3093435c-2a37-4362-b565-39d4dccc14fe 
+May 16 17:37:33.314 GENERAL: working_dir=C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\dynamips\3093435c-2a37-4362-b565-39d4dccc14fe
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm create R1 1 c3725 
+May 16 17:37:33.314 VM: VM R1 created.
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm set_con_tcp_port R1 5003 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: c3725 get_mac_addr R1 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm set_disk0 R1 0 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm set_exec_area R1 64 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm set_idle_pc R1 0x60a6a1e0 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm set_ios R1 C:/Users/rafae/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: c3725 set_mac_addr R1 c201.2cd0.0000 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm set_nvram R1 256 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 17:37:33.314 HYPERVISOR: exec_cmd: vm slot_add_binding R1 1 0 NM-1FE-TX 
+May 16 17:37:35.610 HYPERVISOR: exec_cmd: nio create_udp udp-578c32f1-ecfb-4d72-b433-97366cd5ec05 10004 127.0.0.1 10005 
+May 16 17:37:35.860 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 0 1 udp-578c32f1-ecfb-4d72-b433-97366cd5ec05 
+May 16 17:37:35.860 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 17:37:36.594 HYPERVISOR: exec_cmd: nio create_udp udp-5705fe6b-ff09-4557-b410-828d612eb98d 10020 127.0.0.1 10021 
+May 16 17:37:36.594 HYPERVISOR: exec_cmd: vm slot_add_nio_binding R1 0 0 udp-5705fe6b-ff09-4557-b410-828d612eb98d 
+May 16 17:37:36.594 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 17:37:39.610 HYPERVISOR: exec_cmd: vm create Ghost 0 c3725 
+May 16 17:37:39.610 VM: VM Ghost created.
+May 16 17:37:39.610 HYPERVISOR: exec_cmd: vm set_ios Ghost C:/Users/rafae/GNS3/images/IOS/c3725-advipservicesk9-mz.124-21.image 
+May 16 17:37:39.610 HYPERVISOR: exec_cmd: vm set_ghost_status Ghost 1 
+May 16 17:37:39.625 HYPERVISOR: exec_cmd: vm set_ghost_file Ghost C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\dynamips\c3725-advipservicesk9-mz.124-21.image-128.ghost 
+May 16 17:37:39.625 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 16 17:37:39.625 HYPERVISOR: exec_cmd: vm set_config Ghost configs\i0_startup-config.cfg 
+May 16 17:37:39.625 HYPERVISOR: exec_cmd: vm start Ghost 
+May 16 17:37:39.938 HYPERVISOR: exec_cmd: vm get_status Ghost 
+May 16 17:37:39.938 HYPERVISOR: exec_cmd: vm stop Ghost 
+May 16 17:37:40.063 VM: VM Ghost shutdown.
+May 16 17:37:40.063 HYPERVISOR: exec_cmd: vm extract_config Ghost 
+May 16 17:37:40.063 HYPERVISOR: exec_cmd: vm clean_delete Ghost 
+May 16 17:37:40.063 VM: VM Ghost destroyed.
+May 16 17:37:40.078 HYPERVISOR: exec_cmd: vm set_ghost_status R1 2 
+May 16 17:37:40.078 HYPERVISOR: exec_cmd: vm set_ghost_file R1 C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\dynamips\c3725-advipservicesk9-mz.124-21.image-128.ghost 
+May 16 17:37:40.078 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 17:37:40.078 HYPERVISOR: exec_cmd: vm set_config R1 configs\i1_startup-config.cfg 
+May 16 17:37:40.078 HYPERVISOR: exec_cmd: vm start R1 
+May 16 17:37:56.113 HYPERVISOR: exec_cmd: nio bind_filter udp-5705fe6b-ff09-4557-b410-828d612eb98d 2 capture 
+May 16 17:37:56.113 HYPERVISOR: exec_cmd: nio setup_filter udp-5705fe6b-ff09-4557-b410-828d612eb98d 2 en10mb C:\Users\rafae\OneDrive\Ambiente de Trabalho\LECI\2ano\RC2\aula6\project-files\captures\R1_FastEthernet00_to_R2_FastEthernet00.pcap 
+May 16 17:47:10.608 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 17:47:10.623 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:03:41.011 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:03:41.011 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:07:41.084 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:07:41.084 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:21:11.343 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:21:11.358 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:28:10.941 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 18:28:10.945 HYPERVISOR: exec_cmd: vm stop R1 
+May 16 18:28:11.060 VM: VM R1 shutdown.
+May 16 18:28:11.061 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:28:11.066 HYPERVISOR: exec_cmd: nio unbind_filter udp-5705fe6b-ff09-4557-b410-828d612eb98d 2 
+May 16 18:28:12.044 HYPERVISOR: exec_cmd: vm get_status R1 
+May 16 18:28:12.044 HYPERVISOR: exec_cmd: vm extract_config R1 
+May 16 18:28:12.045 HYPERVISOR: exec_cmd: vm delete R1 
+May 16 18:28:12.045 VM: VM R1 destroyed.
+May 16 18:28:12.046 HYPERVISOR: exec_cmd: hypervisor stop 
+May 16 18:28:12.197 HYPERVISOR: Stopped.
+May 16 18:28:12.197 GENERAL: reset done.
