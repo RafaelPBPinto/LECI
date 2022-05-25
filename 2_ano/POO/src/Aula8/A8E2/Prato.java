@@ -50,7 +50,7 @@ public class Prato {
             ingredientes.add(a);
             return true;
         }else{
-            System.out.println("Ingrediente já existe neste prato!");
+            System.out.println("\tIngrediente já existe neste prato!");
             return false;
         }
     }
@@ -60,7 +60,7 @@ public class Prato {
             ingredientes.remove(a);
             return true;
         }else{
-            System.out.println("Ingrediente não existe neste prato!");
+            System.out.println("\tIngrediente não existe neste prato!");
             return false;
         }
     }

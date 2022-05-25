@@ -34,7 +34,7 @@ public class Ementa {
             numPratos[d.ordinal()]++;
             return true;
         }else{
-            System.out.println("Prato já existente!");
+            System.out.println("\tPrato já existente!");
             return false;
         }
     }
@@ -45,7 +45,7 @@ public class Ementa {
             numPratos[d.ordinal()]--;
             return true;
         }else{
-            System.out.println("Prato não existe!");
+            System.out.println("\tPrato não existe!");
             return false;
         }
     }

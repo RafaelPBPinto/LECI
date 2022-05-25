@@ -1,7 +1,7 @@
 package Aula8.A8E2;
 import java.util.ArrayList;
 
-public class PratoVegetariano extends Prato {
+public class PratoVegetariano extends Prato implements Vegetariano {
     public PratoVegetariano(String nome, ArrayList<Alimento> ingredientes){
         super(nome, ingredientes);
     }
@@ -12,16 +12,16 @@ public class PratoVegetariano extends Prato {
 
     @Override
     public boolean addIngrediente(Alimento a){
-        if(a instanceof AlimentoVegetariano){
+        if(a instanceof Vegetariano){
             if(!getIngredientes().contains(a)){
                 getIngredientes().add(a);
                 return true;
             }else{
-                System.out.println("Ingrediente já existe neste prato!");
+                System.out.println("\tIngrediente já existe neste prato!");
                 return false;
             }
         }else{
-            System.out.println("Ingrediente não é vegetariano!");
+            System.out.println("\tIngrediente não é vegetariano!");
             return false;
         }
     }
