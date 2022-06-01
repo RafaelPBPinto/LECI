@@ -92,6 +92,24 @@ public class DateYMD extends Date {
         }
     }
 
+    public int compareTo(Date d){
+        if(this.year < d.getYear()){
+            return -1;
+        }else if(this.year > d.getYear()){
+            return 1;
+        }else if(this.month < d.getMonth()){
+            return -1;
+        }else if(this.month > d.getMonth()){
+            return 1;
+        }else if(this.day < d.getDay()){
+            return -1;
+        }else if(this.day > d.getDay()){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
     @Override
     public String toString(){
         return String.format("%04d-%02d-%02d", year, month, day);

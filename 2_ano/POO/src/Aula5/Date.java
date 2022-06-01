@@ -1,6 +1,6 @@
 package Aula5;
 
-public class Date {
+public class Date implements Comparable<Date> {
     private int day;
     private int month;
     private int year;
@@ -145,6 +145,24 @@ public class Date {
             }else{
                 day--;
             }
+        }
+    }
+
+    public int compareTo(Date d){
+        if(this.year < d.year){
+            return -1;
+        }else if(this.year > d.year){
+            return 1;
+        }else if(this.month < d.month){
+            return -1;
+        }else if(this.month > d.month){
+            return 1;
+        }else if(this.day < d.day){
+            return -1;
+        }else if(this.day > d.day){
+            return 1;
+        }else{
+            return 0;
         }
     }
 

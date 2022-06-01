@@ -125,6 +125,24 @@ public class DateND extends Date {
         numdays--;
     }
 
+    public int compareTo(Date d){
+        if(this.getYear() < d.getYear()){
+            return -1;
+        }else if(this.getYear() > d.getYear()){
+            return 1;
+        }else if(this.getMonth() < d.getMonth()){
+            return -1;
+        }else if(this.getMonth() > d.getMonth()){
+            return 1;
+        }else if(this.getDay() < d.getDay()){
+            return -1;
+        }else if(this.getDay() > d.getDay()){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
     @Override
     public String toString(){
         return String.format("%04d-%02d-%02d", getYear(), getMonth(), getDay());

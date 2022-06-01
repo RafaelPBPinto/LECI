@@ -1,6 +1,6 @@
 package Aula7;
 
-public abstract class Date {
+public abstract class Date implements Comparable<Date> {
     public boolean validMonth(int month){
         return (month > 0 && month <= 12);
     }
@@ -63,5 +63,5 @@ public abstract class Date {
     public abstract int getYear();
     public abstract void increment();
     public abstract void decrement();
-    
+    public abstract int compareTo(Date d);
 }
