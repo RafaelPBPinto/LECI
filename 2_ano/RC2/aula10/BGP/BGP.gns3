@@ -568,8 +568,8 @@
                 "symbol": ":/symbols/ethernet_switch.svg",
                 "template_id": "1966b864-93e7-32d5-965f-001384eec461",
                 "width": 72,
-                "x": -252,
-                "y": -90,
+                "x": -292,
+                "y": -105,
                 "z": 1
             },
             {
@@ -648,7 +648,7 @@
                 "symbol": ":/symbols/ethernet_switch.svg",
                 "template_id": "1966b864-93e7-32d5-965f-001384eec461",
                 "width": 72,
-                "x": -238,
+                "x": -281,
                 "y": -266,
                 "z": 1
             },
@@ -728,8 +728,8 @@
                 "symbol": ":/symbols/ethernet_switch.svg",
                 "template_id": "1966b864-93e7-32d5-965f-001384eec461",
                 "width": 72,
-                "x": 180,
-                "y": -279,
+                "x": 233,
+                "y": -275,
                 "z": 1
             },
             {
@@ -808,8 +808,8 @@
                 "symbol": ":/symbols/ethernet_switch.svg",
                 "template_id": "1966b864-93e7-32d5-965f-001384eec461",
                 "width": 72,
-                "x": 179,
-                "y": -96,
+                "x": 208,
+                "y": -105,
                 "z": 1
             },
             {
