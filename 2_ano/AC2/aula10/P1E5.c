@@ -10,6 +10,11 @@ void putc(char byte){
     U2TXREG = U2TXREG | byte;
 }
 
+char getc(void){
+    while(U2STAbits.URXDA == 0);
+    return U2RXREG;
+}
+
 void putstr(char *str){
     int i = 0;
     do{
@@ -22,19 +27,17 @@ void putstr(char *str){
 
 int main(void){
     // Config UART2
-    U2BRG = ((PBCLK + 8 * 115200) / (16 * 115200)) - 1;
+    U2BRG = 10;
     U2MODEbits.BRGH = 0;    // High Baud Rate Enable bit (fator 16)
-    U2MODEbits.STSEL = 2;   // Stop bits (1 stop bit)
+    U2MODEbits.STSEL = 0;   // Stop bits (1 stop bit)
     U2MODEbits.PDSEL1 = 0;
-    U2MODEbits.PDSEL0 = 1;  // parity
+    U2MODEbits.PDSEL0 = 0;  // parity
     U2STAbits.URXEN = 1;    // Enable the receiver
     U2STAbits.UTXEN = 1;    //Enable the trasmitter
     U2MODEbits.ON= 1;    // Enable UART2
-    /*U2MODE = U2MODE & 0xFFFF7FF0;
-    U2STA = U2STA | 0x00001400;*/
     while(1){
-        putstr("String de teste\n");
-        delay(1000);
+        char c = getc();
+        putc(c);
     }
     return 0;
 }
