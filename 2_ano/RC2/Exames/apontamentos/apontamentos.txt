@@ -1,0 +1,54 @@
+	MPLS
+
+Primeiro acontece a fase da descoberta dos vizinhos através do envio de mensganes hello numa sessão udp por multicast.
+Depois é aberta uma sessão TCP com todos os vizinhos e é trocada informações sobre as redes que cada um conhece e dos labels de cada router.
+
+LDP só distribui labels e info de redes. Túnel extremo a extemo => protocolo rstpe
+
+Encaminhamento mais rápido e reserva de largura de banda
+
+<------------->
+
+Rotas de omissão tipo 1 => leva em conta a soma de todos os custos; tipo 2 => não
+
+Router Trânsito => vizinhos anuncia todas as redes (dele e dos vizinhos)
+Router não trânsito => anuncia só as suas redes
+
+	Sip proxy fw ??
+
+pessos com @domain1.com quer fazer chamada para pessoa com @domain2.com, o proxy do domain1 procura pelo NAPTR do domain2.com e SRV, depois manda para a internet um invite com a info do domain2 e ??
+
+<------------>
+
+BGP filtering para rejeitar/bloquear (nunca passa) AS. Ver na AS path se no caminho tem lá AS de tal país ou empresa bloquear essas.
+
+Se for preferir uma em detriormento de outra usar preferência local maior na que preferir
+
+Switch ideal para as VLANs são os que estão mais no centro mais perto da internet. Evitar switch das pontas ser raiz
+
+RIPng tem custos. Rip não tem custos, apenas conta hops até 15.
+
+<-------------->
+
+	Fazer ponte de RIP com o OSPF 
+
+ativar o rip no router que liga à parte antiga. dps redistribuir as redes do rip para o ospf e por fim redistribuir as rotas de omissão (para chegar à internet) do ospf para o rip
+
+*Problema do encaminhamento estático é quando algo falha a rota estática continua lá e os routers continuam a encaminhar para um sítio que já não existe
+
+OSPF para preferir um caminho a outro é simplesmente meter uma distância administrativa menor no que queremos prioritizar
+
+<------------->
+
+	Tuneis
+	
+Obrigatoriamente, forçar o tráfego para algum lado => Criar túnel no ponto de decisão garantir que só entra no túnel os pacotes com IP origem correto.
+
+<------------->
+
+	VLANs
+	
+5. Nas VLANs meter uma rota de omissão para a internet para que o edíficio antigo chegue à internet 
+
+VLANs end-to-end (não precisam de routing) se as ligações for trunk são os que têm permissão de transporte
+  
