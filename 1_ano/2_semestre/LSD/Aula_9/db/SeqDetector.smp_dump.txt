@@ -1,0 +1,7 @@
+
+State Machine - |SeqDetDemo|SeqDetFSM:u1|s_currentstate
+Name s_currentstate.S3 s_currentstate.S2 s_currentstate.S1 s_currentstate.S0 
+s_currentstate.S0 0 0 0 0 
+s_currentstate.S1 0 0 1 1 
+s_currentstate.S2 0 1 0 1 
+s_currentstate.S3 1 0 0 1 

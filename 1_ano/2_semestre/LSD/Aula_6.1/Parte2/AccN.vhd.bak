@@ -1,0 +1,23 @@
+ibrary ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity AccN is
+	generic(K : positive := 1);
+	port (clk	  : in std_logic;
+			en      : in std_logic;
+			reset   : in std_logic;
+			dataIn  : in std_logic_vector(K-1 downto 0);
+			dataOut : out std_logic_vector(K-1 downto 0));
+end AccN;
+
+architecture v1 of AccN is
+	signal s_regOut  : std_logic_vector(K-1 downto 0);
+	signal s_adderOut: std_logic_vector(K-1 downto 0);
+begin
+
+u1:	entity work.AdderN(v1)
+			port map(op0    => dataIn,
+						op1    => s_regOut;
+						result => s_adderOut;
+end v1;

@@ -1,0 +1,23 @@
+Quartus Prime Archive log --	C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/MicroProjectoDemo_tmp_archive.qarlog
+
+Archive:	C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/MicroProjectoDemo_tmp_archive.qar
+Date:		Tue May 10 20:58:45 2016
+Quartus Prime		15.1.1 Build 189 12/02/2015 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/DebouncePulse.vhd
+C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/MicroProjectoDemo.bdf
+C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/MicroProjectoDemo.qpf
+C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/MicroProjectoDemo.qsf
+C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/TimerUnit.vhd
+c:/altera_lite/15.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 6 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Tue May 10 20:58:50 2016
+Source archive file:	C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase1/MicroProjectoDemo_tmp_archive.qar
+Archive was extracted into	C:/Users/guilherme.campos/Documents/LSDigitais/2015_16/Microprojecto/Fase2/
+		 - successfully.

@@ -1,0 +1,26 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity ShiftRegisterN is
+	generic(N : positive := 4);
+	port (clk 	  : in std_logic;
+			sin 	  : in std_logic;
+			dataOut : out std_logic_vector(N-1 downto 0));
+			
+end ShiftRegisterN;
+
+architecture v1 of ShiftRegister4 is
+signal s_dataOut : std_logic_vector(3 downto 0);
+
+begin
+	process(clk)
+	begin
+		if(rising_edge(clk)) then
+			dataOut(0) <= sin;
+			dataOut(1) <= dataOut(0);
+			dataOut(2) <= dataOut(1);
+			dataOut(3) <= dataOut(2);
+		end if;
+	end process;
+end v1;

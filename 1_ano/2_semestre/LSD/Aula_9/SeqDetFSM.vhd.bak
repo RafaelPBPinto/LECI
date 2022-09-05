@@ -1,0 +1,11 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity SeqDetFSM is
+
+end SeqDetFSM;
+
+architecture v1 of SeqDetFSM is
+begin
+
+end v1;

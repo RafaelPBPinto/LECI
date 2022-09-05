@@ -1,0 +1,35 @@
+|Register8
+clk => dataOUT[0]~reg0.CLK
+clk => dataOUT[1]~reg0.CLK
+clk => dataOUT[2]~reg0.CLK
+clk => dataOUT[3]~reg0.CLK
+clk => dataOUT[4]~reg0.CLK
+clk => dataOUT[5]~reg0.CLK
+clk => dataOUT[6]~reg0.CLK
+clk => dataOUT[7]~reg0.CLK
+en => dataOUT[0]~reg0.ENA
+en => dataOUT[1]~reg0.ENA
+en => dataOUT[2]~reg0.ENA
+en => dataOUT[3]~reg0.ENA
+en => dataOUT[4]~reg0.ENA
+en => dataOUT[5]~reg0.ENA
+en => dataOUT[6]~reg0.ENA
+en => dataOUT[7]~reg0.ENA
+dataIN[0] => dataOUT[0]~reg0.DATAIN
+dataIN[1] => dataOUT[1]~reg0.DATAIN
+dataIN[2] => dataOUT[2]~reg0.DATAIN
+dataIN[3] => dataOUT[3]~reg0.DATAIN
+dataIN[4] => dataOUT[4]~reg0.DATAIN
+dataIN[5] => dataOUT[5]~reg0.DATAIN
+dataIN[6] => dataOUT[6]~reg0.DATAIN
+dataIN[7] => dataOUT[7]~reg0.DATAIN
+dataOUT[0] <= dataOUT[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[1] <= dataOUT[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[2] <= dataOUT[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[3] <= dataOUT[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[4] <= dataOUT[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[5] <= dataOUT[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[6] <= dataOUT[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dataOUT[7] <= dataOUT[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

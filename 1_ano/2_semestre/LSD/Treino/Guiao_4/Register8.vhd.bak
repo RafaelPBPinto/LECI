@@ -1,0 +1,10 @@
+library ieee;
+use ieee.std_logic_1164;
+
+entity Register8 is 
+	port (clk 	 : in std_logic;
+			en     : in std_logic;
+			dataIN : in std_logic_vector(7 downto 0);
+			dataOUT: out std_logic_vector(7 downto 0));
+
+end Register8;

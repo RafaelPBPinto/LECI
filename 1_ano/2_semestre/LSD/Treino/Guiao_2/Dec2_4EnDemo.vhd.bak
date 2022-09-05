@@ -1,0 +1,15 @@
+library ieee´;
+use ieee.std_logic_1164.all;
+
+entity Dec2_4ENDemo is
+	port (SW  : in std_logic_vector(2 downto 0);
+			LedG: out std_logic_vector(3 downto 0));
+end Dec2_4ENDemo;
+
+architecture v1 of Dec2_4ENDemo is
+begin 
+	system_core : work.entity.Dec2_4EN(v1)
+						port map(enable <= SW(2);
+									inputs <= SW;
+									outputs => LEDG(3 downto 0);
+end v1;

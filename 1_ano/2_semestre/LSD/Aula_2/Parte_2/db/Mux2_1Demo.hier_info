@@ -1,0 +1,7 @@
+|mux21_1
+inputs[0] => outMux.DATAB
+inputs[1] => outMux.DATAA
+sel => outMux.OUTPUTSELECT
+outMux <= outMux.DB_MAX_OUTPUT_PORT_TYPE
+
+
