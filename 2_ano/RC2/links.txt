@@ -1,0 +1,33 @@
+Enterprise Network Design (part 1) - https://www.youtube.com/watch?v=DuOxY33uQnE
+Enterprise Network Design (part 2) - https://www.youtube.com/watch?v=7Phg8JQXt0E
+Enterprise Network Design (part 3) - https://www.youtube.com/watch?v=Z7aUbZybm6w
+VLAN Segmentation Models - https://www.youtube.com/watch?v=_ZoaH5jSOOE
+Interconnection VLAN, Wireless VLAN, Equipment Dimensioning - https://www.youtube.com/watch?v=_5-mcxoxrFk
+Internal Routing (part 1) - https://www.youtube.com/watch?v=GcWTOZMj2lA
+Internal Routing (part 2) - https://www.youtube.com/watch?v=s_a6wgJmJE4
+Internal Routing (part 3) - https://www.youtube.com/watch?v=46ELoZiIkbw
+IPv4 and IPv6 Addressing - https://www.youtube.com/watch?v=PFyOxtuZ36A
+Apoio ao projeto - https://www.youtube.com/watch?v=hjQv6z-4UWI
+Traffic Tunneling - https://www.youtube.com/watch?v=8NelqZlnbiM
+Overlay Networks. IPv4/IPv6 Transition Mechanisms - https://www.youtube.com/watch?v=BNVpc_r-ol0
+DHCP and NAT in Complex Networks - https://www.youtube.com/watch?v=dDSYZBSt1Js
+Advanced DNS (part 1) - https://www.youtube.com/watch?v=kNNWnhZh5vM
+Advanced DNS (part 2) - https://www.youtube.com/watch?v=XcU22aS_uTo
+IPSec - https://www.youtube.com/watch?v=bT59zyhVRrY
+Access Control (AAA & 802.1X) - https://www.youtube.com/watch?v=KYiE_bRI7So
+Virtual Private Networks - https://www.youtube.com/watch?v=Q6tlo5tf5pA
+Network Security Systems (part 1) - https://www.youtube.com/watch?v=ntK_MHbF3KE
+Network Security Systems (part 2) - https://www.youtube.com/watch?v=AqNZvirXNMY
+Introduction to network attacks, defenses and good practices - https://www.youtube.com/watch?v=UIZP6G3QNc8
+Firewall Performance and Rules - https://www.youtube.com/watch?v=wYUrkXxjBWw
+Network Management: SNMP and MIB - https://www.youtube.com/watch?v=Rr2GGkD7oJE
+Network Management: SNMP and NetFlow - https://www.youtube.com/watch?v=uaeAzI9_AnM
+Network Management: IPFIX, Packet capture, Log report - https://www.youtube.com/watch?v=XsE6NCqvQqs
+Management Challenges and Models - https://www.youtube.com/watch?v=KP8SPHL0SXE
+Multicast Routing - https://www.youtube.com/watch?v=eOtG8u_Dcms
+Quality of Service - https://www.youtube.com/watch?v=LiKUr6hb7qc
+Resolução de exame em 2020 - https://www.youtube.com/watch?v=emxBiDE3lds
+
+
+
+
