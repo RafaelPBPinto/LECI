@@ -1,0 +1,2 @@
+g++ ficheiros
+.a.out
