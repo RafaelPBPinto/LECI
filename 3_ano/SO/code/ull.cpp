@@ -53,6 +53,30 @@ namespace ull
 
     void insert(uint32_t nmec, const char *name)
     {
+        /*Procurar posicao a inserir*/
+        Node *p1, *p2;
+        for(p1 = NULL, p2 = head; p2 != NULL; p1 = p2, p2 = p2->next){
+            if(p2->reg.nmec >= nmec){
+                break;
+            }
+        }
+
+        /*Verificar se ja existe*/
+        if(p2 != NULL && p2->reg.nmec == nmec){
+            return;
+        }
+
+        /*Criar no*/
+        Node *n = new Node();
+        n->reg.nmec = nmec;
+        n->reg.name = name;
+
+        /*Preencher no*/
+        if(p1 == NULL){
+            n = p1;
+        }else{
+            
+        }
     }
 
     /* ************************************************* */
