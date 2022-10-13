@@ -1,0 +1,45 @@
+não há memória partilhada nos processos criados entre forks!
+Exemplo criar variável counter cada processo tem uma variável counter diferente
+Temos de meter os processos a apontar para memória partilhada
+
+SystemV IPC
+define a key:
+1. IPC_PRIVATE
+2. fixed predetermined key
+3. fotk()
+
+shmget(key, nbits a alocar na zona de memopartilhada, flags(ocatl, rwx) | IPC_CREAT | IPC_EXCL)
+share memory get
+
+octal pois 3 bits que são o número de premissões do utilizador rwx read write x
+x -> execução
+
+pshmget(key, 0, 0) -> use existing 
+
+condição de corrida -> processos chegam ao mesmo tempo à função e uma execução é perdida
+
+Como resolver condição de corrida? Sincronizando o acesso à função 
+Como? Usando semáforos
+
+Região crítica -> só é executado por um processo de cada vez
+	Criar semáforo binário(1/0) 
+	inicial a 1
+	entra sem--
+	sai sem++
+processo entra fica 0 se outro processo tenta decrementar bloqueia e espera porque não pode decrementar 0
+
+<------------------------------------------------------------------------------------------------------->
+Guião
+
+fifo_unsafe -> não é controlada o acesso à função de inserção nem de remoção
+			-> com fork são criados vários processos que irão correr na memória partilhada
+			-> por vezes vários processos chegam ao mesmo tempo à função que querem realizar, perdendo assim algumas execuções
+			-> é necessário sincronizar o acesso à função utilizando semáforos
+			
+fifo_safe	-> Os semáforos são binários
+			-> são inicializados com valor 1
+			-> quando algum processo entra na função o sem é decrementado
+			-> se algum processo tentar executar quando o semáforo está a 0 é bloqueado
+			-> quando o processo termina a execução da função o sem é incrementado
+			
+	

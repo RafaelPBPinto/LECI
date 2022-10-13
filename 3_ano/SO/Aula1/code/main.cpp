@@ -65,6 +65,7 @@ void menuChoiceQuit()
 
 void menuChoiceReset()
 {
+    ull::reset();
 }
 
 /* ******************************************** */
@@ -89,6 +90,7 @@ void menuChoiceRemove()
 
 void menuChoicePrint()
 {
+    ull::print();
 }
 
 /* ******************************************** */

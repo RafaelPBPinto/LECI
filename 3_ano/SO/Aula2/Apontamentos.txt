@@ -1,0 +1,97 @@
+							fork()  
+	->creates  a new process by duplicating the calling process.  
+	->The new process is referred to as the child process.  
+		The calling process is referred to as the parent process.
+	->The child process and the parent process run in separate memory spaces.
+		At the time of  fork() both  memory  spaces have the same content.
+
+							getpid()
+	->getpid()  returns the process ID (PID) of the calling process.
+	
+							getppid()
+	->getppid() returns the process ID of the parent of the calling process.  
+			This will be either the ID  of the process that created this process using fork(), 
+				or, if that process has already terminated, the ID of the process 
+					to which this process has been reparented 
+
+parent do fork1 é a bash
+fork1:
+					
+Before the fork:
+  PID = 19459, PPID = 16126(bash)
+  
+  "fork()"
+  
+After the fork:
+  PID = 19459, PPID = 16126
+  Was I printed by the parent or by the child process? How can I know it? parent, mesmo PID que antes do fork
+After the fork:
+  PID = 19460, PPID = 19459
+  Was I printed by the parent or by the child process? How can I know it? child, PPID do pai
+  
+O processo é sempre filho de um outro processo.SEMPRE!
+fork cria o novo processo. Tira uma cópia do processo que chamou o fork. Função que retorna duas vezes.
+
+quando se chama uma função pode acontecer uma falha, por isso fork retorna o pid. Se 0 é filho, se -1 a função falhou nenhum filho foi criado.
+
+pfork check errors, nunca falha só devolve pid e ppid, quando erro termina e lança expçao. 
+
+fork2:
+Before the fork:
+  PID = 20443, PPID = 16126
+After the fork:
+  PID = 20443, PPID = 16126
+After the fork:
+  PID = 20444, PPID = 20443
+  [ret = 20444] Was I printed by the parent or by the child process? How can I know it? parent
+  [ret = 0] Was I printed by the parent or by the child process? How can I know it? child
+  
+  
+PPid pode não ser do pai esperado. Quando um processo termina todos os seus filhos assumem um novo pai(bash).
+bash assume os orfãos. 
+
+fork3:
+Before the fork:
+  PID = 20655, PPID = 16126.
+I'm the parent: PID = 20655, PPID = 16126
+I'm the child: PID = 20656, PPID = 20655
+
+						execl()
+		->The  exec()  family  of  functions replaces the current process image with a new process image.
+		->The first argument, by convention, should point to the filename associated with the file being executed.
+		->substituir processo em execuação por um completamente novo assente num executável.
+		->devolve -1 quando falha
+		
+fork4:
+Before the fork: PID = 21263, PPID = 16126
+I'm the parent: PID = 21263, PPID = 16126
+why doesn't this message show up?
+
+------------------------------------------
+Before the fork: PID = 21628, PPID = 16126
+I'm the parent: PID = 21628, PPID = 16126
+error launching child process: No such file or directory
+
+
+
+Sinais
+
+CTRL+C para terminar é um sinal predefinido
+
+kill/pkill
+sigaction 
+
+PID = 22203
+00000004 ^C
+Stay calm, I haven't reached 50 yet!
+00000005 ^C
+Stay calm, I haven't reached 50 yet!
+00000006 ^C
+Stay calm, I haven't reached 50 yet!
+00000007 ^C
+Stay calm, I haven't reached 50 yet!
+00000008 ^C
+Stay calm, I haven't reached 50 yet!
+00000049 
+
+executa a função Interrupt e CTRL+C muda o significado na bash

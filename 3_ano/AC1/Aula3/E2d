@@ -1,0 +1,20 @@
+if(flag == 1 || bit != 0)
+
+
+if: beq		$t3,1,then	
+	bnez	$t4,then
+	j	endif
+	
+then:
+
+endif:
+
+
+		ou
+		
+if: beq		$t3,1,then	
+	beqz	$t4,endif
+	
+then:
+
+endif:
