@@ -1,0 +1,35 @@
+Programação concorrente com threads
+
+Vantagens
+partilha de memória é um dado adquirido 
+criar uma nova thread é mais eficiente que criar um novo processo (usa menos recursos)
+
+
+pthread_t não pode usar ==
+pthread_t_equal
+
+Não se deve copiar variáveis thread pois é um tipo de dados opaco, isto é, não se pode prever o que vai lá estar dentro
+
+thread => ponteiro para memória	
+
+mutex => mutual excluciosan 
+
+ponteiro para funçao da thread é o próprio nome
+
+unsafe => não há sincronização
+
+
+thread lança outra e espere que termine (conta a 10)
+
+#include
+stdio.h
+unistd.h
+thread.h
+
+funçao
+thread_create
+thread_join para lançar
+
+ter uma variavel partilhada e temos varias threads a incrementar essa variavel partilhada
+
+makefile => acrescentar target e criar p: depend ...

@@ -1,0 +1,5 @@
+26
+
+-> implementar threads (main)
+-> criar as threads e esperar que acabe a execução (main)
+-> 
