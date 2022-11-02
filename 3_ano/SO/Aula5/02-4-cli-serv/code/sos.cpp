@@ -63,6 +63,7 @@ namespace sos
         pthread_cond_t fifoNotEmpty[2];
         pthread_cond_t fifoNotFull[2];
         pthread_cond_t awnsered[NBUFFERS];
+        bool _awnsered[NBUFFERS];
     };
 
     /** \brief pointer to shared area dynamically allocated */
@@ -127,10 +128,7 @@ namespace sos
          * Destroy synchronization elements
          */
 
-        /* 
-         * TODO point
-        *  Destroy the shared memory
-        */
+        delete sharedArea;
 
         /* nullify */
         sharedArea = NULL;
@@ -199,10 +197,7 @@ namespace sos
         fprintf(stderr, "%s()\n", __FUNCTION__);
 #endif
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        return fifoOut(FREE_BUFFER);
     }
 
     /* -------------------------------------------------------------------- */
@@ -216,10 +211,9 @@ namespace sos
         require(token < NBUFFERS, "token is not valid");
         require(data != NULL, "data pointer can not be NULL");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        mutex_lock(&sharedArea->bufferAccess);
+        memcpy(&sharedArea->pool[token].req, data, (size_t)(MAX_STRING_LEN + 1));
+        mutex_unlock(&sharedArea->bufferAccess);
     }
 
     /* -------------------------------------------------------------------- */
@@ -232,10 +226,7 @@ namespace sos
 
         require(token < NBUFFERS, "token is not valid");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        fifoIn(PENDING_REQUEST, token);
     }
 
     /* -------------------------------------------------------------------- */
@@ -248,11 +239,9 @@ namespace sos
 
         require(token < NBUFFERS, "token is not valid");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         * avoiding race conditions and busy waiting
-         */
+        while(sharedArea->_awnsered[token] == false){
+                cond_signal(&sharedArea->awnsered[token]);
+        }
     }
 
     /* -------------------------------------------------------------------- */
@@ -266,10 +255,11 @@ namespace sos
         require(token < NBUFFERS, "token is not valid");
         require(resp != NULL, "resp pointer can not be NULL");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        mutex_lock(&sharedArea->bufferAccess);
+        resp->noChars = sharedArea->pool[token].resp.noChars;
+        resp->noDigits = sharedArea->pool[token].resp.noDigits;
+        resp->noLetters = sharedArea->pool[token].resp.noLetters;
+        mutex_unlock(&sharedArea->bufferAccess);
     }
 
     /* -------------------------------------------------------------------- */
@@ -282,10 +272,12 @@ namespace sos
 
         require(token < NBUFFERS, "token is not valid");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        mutex_lock(&sharedArea->bufferAccess);
+        memset(sharedArea->pool[token].req , '\0' , MAX_STRING_LEN + 1);
+        sharedArea->_awnsered[token] = false;
+        mutex_unlock(&sharedArea->bufferAccess);
+        fifoIn(FREE_BUFFER, token);
+
     }
 
     /* -------------------------------------------------------------------- */
@@ -297,10 +289,7 @@ namespace sos
         fprintf(stderr, "%s()\n", __FUNCTION__);
 #endif
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        return fifoOut(PENDING_REQUEST);
     }
 
     /* -------------------------------------------------------------------- */
@@ -314,10 +303,9 @@ namespace sos
         require(token < NBUFFERS, "token is not valid");
         require(data != NULL, "data pointer can not be NULL");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        mutex_lock(&sharedArea->bufferAccess);
+        memcpy(data , &sharedArea->pool[token].req , (size_t)(MAX_STRING_LEN + 1));
+        mutex_unlock(&sharedArea->bufferAccess);
     }
 
     /* -------------------------------------------------------------------- */
@@ -331,10 +319,12 @@ namespace sos
         require(token < NBUFFERS, "token is not valid");
         require(resp != NULL, "resp pointer can not be NULL");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         */
+        mutex_lock(&sharedArea->bufferAccess);
+        sharedArea->pool[token].resp.noChars = resp->noChars;
+        sharedArea->pool[token].resp.noDigits = resp->noDigits;
+        sharedArea->pool[token].resp.noLetters = resp->noLetters;
+        sharedArea->_awnsered[token] = true;
+        mutex_unlock(&sharedArea->bufferAccess);
     }
 
     /* -------------------------------------------------------------------- */
@@ -347,11 +337,7 @@ namespace sos
 
         require(token < NBUFFERS, "token is not valid");
 
-        /* 
-         * TODO point
-         * Replace with your code, 
-         * avoiding race conditions and busy waiting
-         */
+        cond_broadcast(&sharedArea->awnsered[token]);
     }
 
     /* -------------------------------------------------------------------- */
