@@ -1,0 +1,5 @@
+fila normal com uma fila com prioridade 
+escolher prioridade e mantê-la sempre igual
+
+.so shared object vários programas a usar a biblioteca dinâmica
+.a mode estático tem lá tudo mas é maior

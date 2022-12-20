@@ -102,11 +102,11 @@ def main():
     
     input_file = input("input file name: ")
     output_file = "encrypt_" + input_file
-    key_file = input("key_file name: ")
+    key_file = input("public_key_file name: ")
     encrypt(input_file, output_file, key_file)
     
     output_file = "decrypt_" + input_file
-    key_file = input("key_file name: ")
+    key_file = input("private_key_file name: ")
     decrypt(input_file, output_file, key_file)
 
 main()

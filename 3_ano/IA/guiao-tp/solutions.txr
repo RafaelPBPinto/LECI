@@ -1,0 +1,33 @@
+		II-1
+
+a) variáveis de estado	-> narpoes => nº de arpoes do robot (0<=x>=10)
+			   npeixes => nº de peixe no armazém do barco (0<=x>=20)
+			   
+b) predicados	->	peixenafrente => peixe em frente ao robot
+			depositoCheio => 0 -> empty; 20 -> full
+			peixeAtengido => peixe foi atingido
+	
+c) 
+    |	Situação	|	Actualização	  |	Ação        	|          
+    |-------------------------------------------------------------------|
+    |	 peixenafrente 	|	narpoes--	  |	Disparar	|
+    |    narpoes>0      |			  |			|
+    |    npeixes<20	|			  |			|
+    |    !peixeAtengido |			  |			|
+    |-------------------------------------------------------------------|
+    |	peixeAtengido	|  	npeixes++	  |	Agarrar		|
+    |   !depositoCheio  |  	narpoes--	  |			|
+    |-------------------------------------------------------------------|
+    |	narpoes == 0	|	narpoes=10	  |	Reabastecer	|
+    |	!peixeAtengido  |		 	  |			|
+    |-------------------------------------------------------------------|
+    |	npeixes==20	|	npeixes=0	  |	Descarregar	|
+    |-------------------------------------------------------------------|
+    |	!peixnafrente	|	    -		  |	Vaguear		|
+    |   !peixeAtengido  |	    -    	  |			|
+    |   npeixes < 20    |	    -		  |			|
+    |   narpoes > 0	|	    -   	  |			|
+
+===================================================================================================
+		III-10
+

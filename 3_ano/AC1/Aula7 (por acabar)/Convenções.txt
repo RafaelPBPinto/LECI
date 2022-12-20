@@ -1,0 +1,11 @@
+Convenções
+
+1)Passar parâmetros: $a0 ... $a3
+
+2)Retornar Resultado: $v0
+
+3) Utilização de Registo:
+	Subrotina terminal: Só deve usar $tx,$vx,$ax
+	Subrotina intermédia: 	valores temporários: $tx,$vx,$ax
+				valores permanentes: $sx
+				
