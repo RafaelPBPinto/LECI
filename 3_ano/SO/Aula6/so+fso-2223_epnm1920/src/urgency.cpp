@@ -41,6 +41,10 @@ typedef struct
 {
    char name[MAX_NAME+1];
    int done; // 0: waiting for consultation; 1: consultation finished
+   /* ---------------Code-------------------- */
+   pthread_mutex_t accessCR;
+   pthread_cond_t treat;
+   /* --------------------------------------- */
 } Patient;
 
 typedef struct
@@ -73,6 +77,14 @@ void init_simulation(uint32_t np)
    hd->num_patients = np;
    init_pfifo(&hd->triage_queue);
    init_pfifo(&hd->doctor_queue);
+   
+   /* ---------------Code-------------------- */
+   for(uint32_t i=0;i<MAX_PATIENTS;i++){
+      hd->all_patients[i].accessCR = PTHREAD_MUTEX_INITIALIZER;
+      hd->all_patients[i].done = 0;
+      hd->all_patients[i].treat = PTHREAD_COND_INITIALIZER;
+   }
+   /* --------------------------------------- */
 }
 
 /* ************************************************* */
@@ -98,8 +110,30 @@ void doctor_iteration()
    printf("\e[32;01mDoctor: treat patient %u\e[0m\n", patient);
    random_wait();
    printf("\e[32;01mDoctor: patient %u treated\e[0m\n", patient);
+   /* ---------------Code-------------------- */
+   mutex_lock(&hd->all_patients[patient].accessCR);
    hd->all_patients[patient].done = 1;
+   cond_broadcast(&hd->all_patients[patient].treat);
+   mutex_unlock(&hd->all_patients[patient].accessCR);
+   /* --------------------------------------- */
 }
+
+/* ---------------Code-------------------- */
+void* nurse_iteration(void *){
+   while(true){
+      nurse_iteration();
+   }
+   return NULL;
+}
+
+void* doctor_iteration(void *){
+   while(true){
+      doctor_iteration();
+   }
+   return NULL;
+}
+/* --------------------------------------- */
+
 
 /* ************************************************* */
 
@@ -115,18 +149,39 @@ void patient_goto_urgency(int id)
 void patient_wait_end_of_consultation(int id)
 {
    check_valid_name(hd->all_patients[id].name);
+
+   /* ---------------Code-------------------- */
+   mutex_lock(&hd->all_patients[id].accessCR);
+
+   while(hd->all_patients[id].done == 0){
+      cond_wait(&hd->all_patients[id].treat, &hd->all_patients[id].accessCR);
+   }
+
+   /* --------------------------------------- */
+
    printf("\e[30;01mPatient %s (number %u): health problems treated\e[0m\n", hd->all_patients[id].name, id);
+
+   /* ---------------Code-------------------- */
+   mutex_unlock(&hd->all_patients[id].accessCR);
+   /* --------------------------------------- */
 }
 
 /* changes are required to this function */
 void patient_life(int id)
 {
    patient_goto_urgency(id);
-   nurse_iteration();  // to be deleted in concurrent version
-   doctor_iteration(); // to be deleted in concurrent version
    patient_wait_end_of_consultation(id);
    memset(&(hd->all_patients[id]), 0, sizeof(Patient)); // patient finished
 }
+
+/* ---------------Code-------------------- */
+void* patient_life(void* v)
+{
+   uint* p = (uint*)v;
+   patient_life(*p);
+   return NULL;
+}
+/* --------------------------------------- */
 
 /* ************************************************* */
 
@@ -182,13 +237,49 @@ int main(int argc, char *argv[])
    /* init simulation */
    init_simulation(npatients);
 
-   /* dummy code to show a very simple sequential behavior */
+   /* ---------------Code-------------------- */
+   pthread_t doctors[ndoctors];
+   pthread_t nurses[nnurses];
+   pthread_t patients[npatients];
+
+   for(uint i=0; i<ndoctors; i++){
+      pthread_create(&doctors[i], NULL, doctor_iteration, NULL);
+   }
+
+   for(uint i=0; i<nnurses; i++){
+      pthread_create(&nurses[i], NULL, nurse_iteration, NULL);
+   }
+
+   int args[npatients];
+
+   for(uint i=0;i<npatients;i++){
+      args[i] = i;
+      pthread_create(&patients[i] , NULL , patient_life , &args[i]); 
+   }
+
+   for(uint i=0;i<npatients;i++){
+      thread_join(patients[i] , NULL);
+   }
+
+   for(uint i=0;i<ndoctors;i++){
+      thread_cancel(doctors[i]);
+   }
+
+   for(uint i=0;i<nnurses;i++){
+      thread_cancel(nurses[i]);
+   }
+
+   delete hd;
+
+   /* --------------------------------------- */
+   
+   /* dummy code to show a very simple sequential behavior 
    for(uint32_t i = 0; i < npatients; i++)
    {
       printf("\n");
       random_wait(); // random wait for patience creation
       patient_life(i);
-   }
+   }*/
 
    return EXIT_SUCCESS;
 }

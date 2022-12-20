@@ -32,9 +32,12 @@ typedef struct
    uint32_t out;  ///< point of retrieval (queue head)
    uint32_t cnt;  ///< number of items stored
 
-   pthread_mutex_t accessCR = PTHREAD_MUTEX_INITIALIZER;
-   pthread_cond_t notFull = PTHREAD_COND_INITIALIZER;
-   pthread_cond_t notEmpty = PTHREAD_COND_INITIALIZER;
+   /* ---------------Code-------------------- */
+   pthread_mutex_t accessCR;
+   pthread_cond_t notFull;
+   pthread_cond_t notEmpty;
+   /* --------------------------------------- */
+
 } PriorityFIFO;
 
 void init_pfifo(PriorityFIFO* pfifo);
