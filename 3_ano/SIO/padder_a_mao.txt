@@ -1,0 +1,6 @@
+while TRUE:
+                    block = inputfile.read(block_size)
+                    if len(block) == 0:
+                        break
+                    elif len(block) % 16 != 0:
+                        padder.update(block)

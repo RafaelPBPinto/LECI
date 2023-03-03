@@ -1,0 +1,11 @@
+Artigos científico: título, número de registo, 1 ou mais autores
+
+Autor: nome, e-mail, instituição, 1 ou mais artigos
+
+Instituição: nome, endereço
+
+Participantes: nome, morada, e-mail, instituição, data inscrição, podem ser estudantes e não estudantes
+
+Part estudantes: comprovatido emitido pela instituição => isento de pagamento
+
+Part n-estudantes: referência de transação bancária

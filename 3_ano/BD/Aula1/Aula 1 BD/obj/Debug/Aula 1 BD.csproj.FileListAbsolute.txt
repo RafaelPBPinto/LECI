@@ -1,0 +1,11 @@
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\bin\Debug\Aula 1 BD.exe.config
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\bin\Debug\Aula 1 BD.exe
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\bin\Debug\Aula 1 BD.pdb
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula 1 BD.csproj.AssemblyReference.cache
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula 1 BD.csproj.SuggestedBindingRedirects.cache
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula_1_BD.Form1.resources
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula_1_BD.Properties.Resources.resources
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula 1 BD.csproj.GenerateResource.cache
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula 1 BD.csproj.CoreCompileInputs.cache
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula 1 BD.exe
+C:\Users\rafael\Desktop\LECI\3_ano\BD\Aula1\Aula 1 BD\obj\Debug\Aula 1 BD.pdb

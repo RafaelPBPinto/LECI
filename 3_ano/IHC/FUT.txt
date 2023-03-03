@@ -1,0 +1,19 @@
+Visibility of system status: Tem animações de loading que ajudam o utilizador a preceber que algo está a acontecer. Tem uma barra lateral que indica onde o utilizador se encontra no site realçando a secção onde se encontra. Tem pop ups para confirmar a ação do utilizador. Se acontecer algum erro aparece pop ups a explicar a situação
+
+Match between system and the real world: Para perceber o site o utilizador terá de estar por dentro do jogo fifa ultimate team. Utilizadores masi experientes não teram dificuldades a percorrer o site, porém utilizadores que estejam a começar a jogar e não se encotrem familiarizados com o jogo poderam ter dificulades a utilizar o mesmo
+
+User control and freedom: O utilizador pode precorrer livremente a aplicação. Por vezes o utilizador pode se enganar e não tem como voltar atrás (exemplo listar um jogador para venda por engano, ou enviar um jogador num sbc por engano)
+
+Consistency and standards:O site mantem uma estrutura consistente
+
+Error prevention: São usadas prompts de validação e de confirmação para previnir erro (ex: quicksell jogador sem querer), mas nos sbcs se clicarmos em "enviar e não perguntar mais" essa prompt nunca mais aparece e um jogador pode enviar um jogador sem querer (falha:3)
+
+Recognition rather than recall:São usados icones que representam certas páginas e ações e a pessoa não precisa de decorar como se anda pelo site e consegue navegar apenas por intuição. Mas há excpeções por exemplo não fica claro onde redimir as recompensas ou onde se faz quick sell recovey. 
+
+Flexibility and efficiency of use: Há alguns shortcuts que o utilizador pode usar para precorrer o site de forma mais rápida e eficiente.
+
+Aesthetic and minimalist design:Por vezes o site peca nestas situações e há informação desnecessária apresentada no ecrã que pode confundir o utilizador que use o site.
+
+Help users recognize, diagnose, and recover from errors:São utilizados pop-ups a explicar eventuais erros da aplicação e por vezes o site dá refresh automático para resolver alguns erros de servidor por exemplo.
+
+Help and documentation:Os utilizadores podem recorrer à ea help para colocar algumas questões que tenham, porém esse help center não tem reviews muito positivas. O site também tem um FAQ e forúns para colocar questões mas encontra-se fora da Web app e um utilizador pode não encontrar muito facilmente (site da EA Sports). A web app peca neste requisito.
