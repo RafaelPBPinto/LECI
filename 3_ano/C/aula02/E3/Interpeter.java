@@ -51,10 +51,11 @@ public class Interpeter extends CalculatorBaseVisitor<Long> {
 
    @Override public Long visitExprUnary(CalculatorParser.ExprUnaryContext ctx) {
       switch(ctx.op.getText()) {
+         // Unary operators
 	      case "+": 
-            return Long.parseLong(ctx.expr().getText());
+            return + Long.parseLong(ctx.expr().getText());
          case "-": 
-            return -Long.parseLong(ctx.expr().getText());
+            return - Long.parseLong(ctx.expr().getText());
          default:
             System.err.println("Unknown operator: " + ctx.op.getText());
             break;

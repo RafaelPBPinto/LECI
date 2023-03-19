@@ -29,7 +29,7 @@ public class CalculatorParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'*'", "'/'", "'%'", "'+'", "'-'", "'('", "')'"
+			null, "'+'", "'-'", "'*'", "'/'", "'%'", "'('", "')'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -111,6 +111,11 @@ public class CalculatorParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitProgram(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitProgram(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -123,7 +128,7 @@ public class CalculatorParser extends Parser {
 			setState(9);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 880L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 838L) != 0)) {
 				{
 				{
 				setState(6);
@@ -167,6 +172,11 @@ public class CalculatorParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitStat(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitStat(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatContext stat() throws RecognitionException {
@@ -179,7 +189,7 @@ public class CalculatorParser extends Parser {
 			setState(15);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 368L) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & 326L) != 0)) {
 				{
 				setState(14);
 				expr(0);
@@ -231,6 +241,11 @@ public class CalculatorParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitExprAddSub(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitExprAddSub(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExprParentContext extends ExprContext {
@@ -245,6 +260,11 @@ public class CalculatorParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitExprParent(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitExprParent(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
@@ -262,6 +282,11 @@ public class CalculatorParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitExprUnary(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitExprUnary(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExprIntegerContext extends ExprContext {
@@ -274,6 +299,11 @@ public class CalculatorParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitExprInteger(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitExprInteger(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
@@ -293,6 +323,11 @@ public class CalculatorParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CalculatorListener ) ((CalculatorListener)listener).exitExprMultDivMod(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CalculatorVisitor ) return ((CalculatorVisitor<? extends T>)visitor).visitExprMultDivMod(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -315,13 +350,34 @@ public class CalculatorParser extends Parser {
 			setState(27);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
+			case T__0:
+			case T__1:
+				{
+				_localctx = new ExprUnaryContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
+				setState(20);
+				((ExprUnaryContext)_localctx).op = _input.LT(1);
+				_la = _input.LA(1);
+				if ( !(_la==T__0 || _la==T__1) ) {
+					((ExprUnaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
+				setState(21);
+				expr(5);
+				}
+				break;
 			case Integer:
 				{
 				_localctx = new ExprIntegerContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-
-				setState(20);
+				setState(22);
 				match(Integer);
 				}
 				break;
@@ -330,33 +386,12 @@ public class CalculatorParser extends Parser {
 				_localctx = new ExprParentContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(21);
-				match(T__5);
-				setState(22);
-				expr(0);
 				setState(23);
-				match(T__6);
-				}
-				break;
-			case T__3:
-			case T__4:
-				{
-				_localctx = new ExprUnaryContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
+				match(T__5);
+				setState(24);
+				expr(0);
 				setState(25);
-				((ExprUnaryContext)_localctx).op = _input.LT(1);
-				_la = _input.LA(1);
-				if ( !(_la==T__3 || _la==T__4) ) {
-					((ExprUnaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
-				}
-				else {
-					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
-					_errHandler.reportMatch(this);
-					consume();
-				}
-				setState(26);
-				expr(1);
+				match(T__6);
 				}
 				break;
 			default:
@@ -379,11 +414,11 @@ public class CalculatorParser extends Parser {
 						_localctx = new ExprMultDivModContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(29);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
 						setState(30);
 						((ExprMultDivModContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 14L) != 0)) ) {
+						if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 56L) != 0)) ) {
 							((ExprMultDivModContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -392,7 +427,7 @@ public class CalculatorParser extends Parser {
 							consume();
 						}
 						setState(31);
-						expr(6);
+						expr(5);
 						}
 						break;
 					case 2:
@@ -400,11 +435,11 @@ public class CalculatorParser extends Parser {
 						_localctx = new ExprAddSubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(32);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
 						setState(33);
 						((ExprAddSubContext)_localctx).op = _input.LT(1);
 						_la = _input.LA(1);
-						if ( !(_la==T__3 || _la==T__4) ) {
+						if ( !(_la==T__0 || _la==T__1) ) {
 							((ExprAddSubContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 						}
 						else {
@@ -413,7 +448,7 @@ public class CalculatorParser extends Parser {
 							consume();
 						}
 						setState(34);
-						expr(5);
+						expr(4);
 						}
 						break;
 					}
@@ -446,9 +481,9 @@ public class CalculatorParser extends Parser {
 	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 5);
-		case 1:
 			return precpred(_ctx, 4);
+		case 1:
+			return precpred(_ctx, 3);
 		}
 		return true;
 	}
@@ -461,8 +496,8 @@ public class CalculatorParser extends Parser {
 		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u0002\u001c\b\u0002"+
 		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002"+
 		"\u0005\u0002$\b\u0002\n\u0002\f\u0002\'\t\u0002\u0001\u0002\u0000\u0001"+
-		"\u0004\u0003\u0000\u0002\u0004\u0000\u0002\u0001\u0000\u0004\u0005\u0001"+
-		"\u0000\u0001\u0003+\u0000\t\u0001\u0000\u0000\u0000\u0002\u000f\u0001"+
+		"\u0004\u0003\u0000\u0002\u0004\u0000\u0002\u0001\u0000\u0001\u0002\u0001"+
+		"\u0000\u0003\u0005+\u0000\t\u0001\u0000\u0000\u0000\u0002\u000f\u0001"+
 		"\u0000\u0000\u0000\u0004\u001b\u0001\u0000\u0000\u0000\u0006\b\u0003\u0002"+
 		"\u0001\u0000\u0007\u0006\u0001\u0000\u0000\u0000\b\u000b\u0001\u0000\u0000"+
 		"\u0000\t\u0007\u0001\u0000\u0000\u0000\t\n\u0001\u0000\u0000\u0000\n\f"+
@@ -471,14 +506,14 @@ public class CalculatorParser extends Parser {
 		"\u0000\u000f\u000e\u0001\u0000\u0000\u0000\u000f\u0010\u0001\u0000\u0000"+
 		"\u0000\u0010\u0011\u0001\u0000\u0000\u0000\u0011\u0012\u0005\t\u0000\u0000"+
 		"\u0012\u0003\u0001\u0000\u0000\u0000\u0013\u0014\u0006\u0002\uffff\uffff"+
-		"\u0000\u0014\u001c\u0005\b\u0000\u0000\u0015\u0016\u0005\u0006\u0000\u0000"+
-		"\u0016\u0017\u0003\u0004\u0002\u0000\u0017\u0018\u0005\u0007\u0000\u0000"+
-		"\u0018\u001c\u0001\u0000\u0000\u0000\u0019\u001a\u0007\u0000\u0000\u0000"+
-		"\u001a\u001c\u0003\u0004\u0002\u0001\u001b\u0013\u0001\u0000\u0000\u0000"+
-		"\u001b\u0015\u0001\u0000\u0000\u0000\u001b\u0019\u0001\u0000\u0000\u0000"+
-		"\u001c%\u0001\u0000\u0000\u0000\u001d\u001e\n\u0005\u0000\u0000\u001e"+
-		"\u001f\u0007\u0001\u0000\u0000\u001f$\u0003\u0004\u0002\u0006 !\n\u0004"+
-		"\u0000\u0000!\"\u0007\u0000\u0000\u0000\"$\u0003\u0004\u0002\u0005#\u001d"+
+		"\u0000\u0014\u0015\u0007\u0000\u0000\u0000\u0015\u001c\u0003\u0004\u0002"+
+		"\u0005\u0016\u001c\u0005\b\u0000\u0000\u0017\u0018\u0005\u0006\u0000\u0000"+
+		"\u0018\u0019\u0003\u0004\u0002\u0000\u0019\u001a\u0005\u0007\u0000\u0000"+
+		"\u001a\u001c\u0001\u0000\u0000\u0000\u001b\u0013\u0001\u0000\u0000\u0000"+
+		"\u001b\u0016\u0001\u0000\u0000\u0000\u001b\u0017\u0001\u0000\u0000\u0000"+
+		"\u001c%\u0001\u0000\u0000\u0000\u001d\u001e\n\u0004\u0000\u0000\u001e"+
+		"\u001f\u0007\u0001\u0000\u0000\u001f$\u0003\u0004\u0002\u0005 !\n\u0003"+
+		"\u0000\u0000!\"\u0007\u0000\u0000\u0000\"$\u0003\u0004\u0002\u0004#\u001d"+
 		"\u0001\u0000\u0000\u0000# \u0001\u0000\u0000\u0000$\'\u0001\u0000\u0000"+
 		"\u0000%#\u0001\u0000\u0000\u0000%&\u0001\u0000\u0000\u0000&\u0005\u0001"+
 		"\u0000\u0000\u0000\'%\u0001\u0000\u0000\u0000\u0005\t\u000f\u001b#%";

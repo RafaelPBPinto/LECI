@@ -9,11 +9,11 @@ stat:
     ;
 
 expr:
-        expr op=('*'|'/'|'%') expr  # ExprMultDivMod
+        op=('+'|'-') expr		    # ExprUnary
+    |   expr op=('*'|'/'|'%') expr  # ExprMultDivMod
     |   expr op=('+'|'-') expr      # ExprAddSub
     |   Integer                     # ExprInteger
     |   '(' expr ')'                # ExprParent
-    |   op=('+'|'-') expr		    # ExprUnary
     ;
 
 Integer: [0-9]+;
