@@ -1,0 +1,28 @@
+	Structural Patterns
+
+Adapter - Permite que classes incompatíveis funcionem juntas, convertendo as interfaces das classes em uma interface que os clientes pretendem
+	Combinar interfaces de diferentes classes
+
+Bridge - Separa abstração da sua implementação para que as duas posssam variar independetemente
+	Publicar interface eme hreança hierárquica e esconder implementação na hierarquia
+	Separa a interface da sua implementação
+
+Composite - Compor objetos em arvores para representar toda a hierarquia 
+		File systems 
+		Recursivo
+
+Decorator - Definir responsabilidades adicionais a um objeto dinamicamente
+		Recursivo
+		Adcionar comportamentos a objetos em runtime
+
+Facade - Uma classe única que representa todo um subsistema
+	Interface única que permite uma utilização mais fácil do subsitema
+	Esconde a implementação do subsitema para os clientes
+
+Flyweight - Uma instância muito detalhada usada de forma eficiente partilhada
+	Usar partilha para suportar objetos que são pesados
+	Melhorar performance
+	dividir em sharable e non sharable
+
+Proxy - Um objeto que representa outro objeto
+	Todos as operações do cliente no objeto real têm de passar pelo proxy
