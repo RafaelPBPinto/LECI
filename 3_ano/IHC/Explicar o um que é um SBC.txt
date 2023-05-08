@@ -1,0 +1,42 @@
+Selecionou-se 3 tarefas para fazermos o cognitive walktrhough
+
+Fazer logout parece simples não é intuivo
+	O utilizador pretende fazer log out
+	procura não encontra no ecrã
+	procura na tab opções
+	encontra
+
+Log out está muito escondido. Não é intuitivo encontrar o botão para fazer logout
+Deveria estar sempre vísivel em qualquer parte da aplicação 
+por exemplo no canto superior direito junto do nome de utilizador
+
+Listar jogador
+	Vai para transferências
+	seleciona o jogador
+	esqueceu-se de editar os valores de transf
+	listou o jogador
+	o que o utilizador pode fazer?
+
+Quando um utilizador lista um jogador por engano não consegue voltar atrás com a ação
+Deveria haver uma mesnagem de confirmação ou/e uma opção de voltar atrás com a ação
+
+Redimir recompensas
+O sítio onde se redime os prémios dentro do jogo não está muito vísivel e não é intuítivo chegar lá
+
+	talvez procure na barra do lado
+	depois começa a fazer scroll na página até encontrar um que diz competições
+	não é intuitivo chamar competições onde se recolhe as recompesnas 
+
+deveria haver uma opção na barra do lado que referisse os prémios e redirecionasse o utilizador diretamente para lá
+para ser vísivel em qualquer parte da app
+
+
+Fazer quicksell recovery que é quando o utilizador se engana e faz venda rápida de um jogador e tenta recuperá-lo
+	utilizador tem de ir à página do clube
+	quicksell recovery
+	verificar se ainda tem disponivel
+	
+Não há nenhum sitio que explique como o fazer e o utilizador tem descobrir por ele próprio
+Deveria haver um sítio na aplicação que explique como proceder com por exemplo uma secção com perguntas ferquentes
+
+
