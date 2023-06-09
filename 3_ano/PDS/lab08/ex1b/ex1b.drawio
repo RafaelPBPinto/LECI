@@ -1,0 +1,107 @@
+<mxfile host="app.diagrams.net" modified="2023-05-03T18:08:41.175Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="3FNyvDcWaNotAaUFZBBM" version="21.2.7" type="device">
+  <diagram name="Página-1" id="CsIZn8k-22mnI8G8OEJt">
+    <mxGraphModel dx="1050" dy="545" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-1" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br&gt;BankAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="490" y="80" width="160" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-2" value="deposit(double):void&lt;br&gt;withdray(double):boolean&lt;br&gt;balance():double" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-1" vertex="1">
+          <mxGeometry y="29" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;dashed=1;endArrow=blockThin;endFill=0;endSize=14;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-4" target="El_cYSDg1UFkgi7ZSRrc-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-4" value="BankAccountImpl" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="585" y="220" width="150" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-5" value="bank:String&lt;br&gt;balance:double" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-4" vertex="1">
+          <mxGeometry y="29" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-6" value="getBank():String&lt;br&gt;deposit(double):void&lt;br&gt;withdraw(double):boolean&lt;br&gt;balance():double&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="El_cYSDg1UFkgi7ZSRrc-4" vertex="1">
+          <mxGeometry y="69" width="150" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=blockThin;endFill=0;endSize=14;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-9" target="El_cYSDg1UFkgi7ZSRrc-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="850" y="160" />
+              <mxPoint x="620" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamondThin;startFill=0;startSize=14;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-9" target="El_cYSDg1UFkgi7ZSRrc-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-9" value="BankAccountProxy" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="840" y="225" width="190" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-10" value="bankAccount: BankAccountImpl" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-9" vertex="1">
+          <mxGeometry y="29" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-11" value="getBank():String&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;deposit(double):void&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;withdraw(double):boolean&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;balance():double" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="El_cYSDg1UFkgi7ZSRrc-9" vertex="1">
+          <mxGeometry y="59" width="190" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-13" target="El_cYSDg1UFkgi7ZSRrc-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="200" />
+              <mxPoint x="530" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-13" value="Person" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="320" y="220" width="190" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-14" value="name: String" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-13" vertex="1">
+          <mxGeometry y="29" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-15" value="getName():String&lt;br&gt;getBankAccount():BankAccount" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="El_cYSDg1UFkgi7ZSRrc-13" vertex="1">
+          <mxGeometry y="59" width="190" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=classic;endFill=1;endSize=6;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-17" target="El_cYSDg1UFkgi7ZSRrc-13" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="415" y="430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-17" value="Employee" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="200" y="370" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-18" value="person:Person&lt;br&gt;salary: double" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-17" vertex="1">
+          <mxGeometry y="29" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-19" value="getSalary():double&lt;br&gt;payEmployee(double):void" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="El_cYSDg1UFkgi7ZSRrc-17" vertex="1">
+          <mxGeometry y="69" width="170" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-22" target="El_cYSDg1UFkgi7ZSRrc-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="El_cYSDg1UFkgi7ZSRrc-22" target="El_cYSDg1UFkgi7ZSRrc-24" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="140" y="322" />
+              <mxPoint x="80" y="322" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-22" value="Company" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="80" y="210" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-23" value="admitEmployee(Person, double):void&lt;br&gt;paySalaries(int):void&lt;br&gt;employees():List&amp;lt;Employee&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-22" vertex="1">
+          <mxGeometry y="30" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-24" value="&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;&lt;br&gt;User" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="10" y="370" width="140" height="69" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-25" value="OWNER:User&lt;br&gt;COMPANY:User" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="El_cYSDg1UFkgi7ZSRrc-24" vertex="1">
+          <mxGeometry y="29" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="El_cYSDg1UFkgi7ZSRrc-26" value="SharkCompany" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="110" y="60" width="140" height="54" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

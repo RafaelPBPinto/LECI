@@ -1,0 +1,4 @@
+prancha,ponte canoa
+luz
+lampada
+clube;televisao
