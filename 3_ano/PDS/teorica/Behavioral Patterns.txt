@@ -1,0 +1,152 @@
+	Chain of Responsibility
+
+Stream of requests
+chain the receiving objects and pass the request along the chain until an objects handles it
+Handler if can handle handle else pass to next
+
+Base classe maintains a next pointer
+Derived classes implemnt its handling if they dont handle calls back to base
+Base then delegates to the next pointer
+The client creates and links the chain (setsucessor)
+Client launches and leaves each request with the root of the chain
+Recursive does its magic
+
+	Command
+
+encapsulate a request as an object
+Command turn on/off lights
+
+CallbackInterface - 1,2,3 - Receiver
+
+When to use?
+we need callback functionality
+requests need to be handled at variant times or in variant orders
+the invoker should be decoupled from the object handling the invocation
+
+	Iterator
+
+Provide a way to access the elements of an aggrefate object sequentially without exposing its underlying representation
+
+Esconder implementação mas poder acessar elementos de um conjunto
+
+Iterators são bastante usados em java
+
+iterator gets info
+Agregado returns info
+cliente uses agregado para construir o agregado
+cliente uses iterator para acessar info
+
+Implementar
+Add iterator method to the collection grant iterator class privileged access
+design an iterator class that can encapsulate traversal of the collection
+Client ask the collection object to create an iterator
+cliente usae iterator to access the elements
+
+	Mediator
+
+Define a object that encapsualtes how a set of objects interact
+Design an intermediary to decouple many peers
+
+. loose coupling by keeping the objects from referring each other
+
+Identify a collection of interacting objects that would benefit from mutual decoupling 
+Encapsulate thos interactions in the abstraction of a new class
+Encaspulate those interactions in the abstraction of a new class
+create an instance oft the new classe and rework all peer objects to interact with the mediator only
+balance the principle of decoupling with the principle of distributing responsibility evenly
+Not create a controller or god object
+
+	Memento
+
+Need to restore an object back to its previous state
+
+Without violanting encapsulation, capture and externalize an objects state so that the object can be returned to this state later
+
+A magic cokie that encapsulates a check point capability
+Undo and rollback to gull object status
+
+Originator -> knows how to save itself
+caretaker -> knows why and when the originator needs to save and restore itself
+Memento -> snapshot that is written and read by the originator and shephereded by the caretaker
+
+	NUll object
+
+the presence of a null object be treated transparently
+offers suitable default do nothing
+When you want to abstract the handling of a null away from the client
+
+Usado nas collections e.g. Collections.emptyList()
+
+	Observer
+
+tipo subscritor yt
+
+um grande design monolítico does not scale well as new graphing or monotoring requirements are created
+
+definir um para muitos dependecies entre os objectos para quando um dos muitos muda de estado todos os outros serem NOTIFICADOS e ATUALIZADOS automaticamente
+
+One Subject views multiple observers
+Observer updates subject
+
+Exemplo em java eventListener
+
+Diferenciar as funcionalidades independentes e as dependentes
+
+Independentes passa para o subject
+Dependentes passa para o observer
+
+Subject is coupled only to the observer class
+Client configures number and type of observers
+observers register themselves with the subject
+Subject broadcasts events to all registered observes
+Subject may push info or the observers may pull 
+
+	State
+
+Must change its behaviour at runtime depending on its state
+OR various switch cases or ifs that control the flow based on the state of the app
+
+Allow object to alter his behaviour on runtime based on its state
+
+Maquina de estados
+
+Context has current state
+Various states implements state
+
+Use when class poluted by multiple ifs and switches
+Use when object can behave differently according to its state
+
+	Strategy
+
+Define a family of algorithms encapsulate each one and make them interchangeable
+Lets the algorithm vay independently from the clients that use it
+
+Context defines wich strategy to use
+Context.setStrategy(new strategy)
+
+	Template Method
+
+Implement several things that have significant some things in common -> Create a template and extend it change what is needed for each thing
+
+Basically a template or framework
+
+Standardize the skeleton of an algorithm in a base class template
+Common implementations are definied in the base class
+peculiar implementations are placeholders in base class
+Derivied classes can override placeholders
+Derived classes can override implemented methods also
+can also call back to base class
+
+	Visitor
+
+Defines a new operation to a class without change
+
+Confirm that the current hierarchy will be fairly stable and that the public interface of these classes is sufficient for the access the Visitor classes will require (e.g. have the same functions)
+
+Create a visitor base class with a visit method for each element derived type
+
+Add an accept(Visior) method to the element hierarchy (v.visit(this))
+
+The element hierarchy is coupled to only the visitor base class, but the visitor hiearchy is coupled to each element derived class
+
+Create a visitor derived class for each operation to be performed on element objects

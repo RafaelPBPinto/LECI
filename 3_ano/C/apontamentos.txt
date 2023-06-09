@@ -1,0 +1,45 @@
+* -> 0 ou +
+
+	Gramáticas regulares
+
+. simbolos não terminais têm de aparecer no fim
+. simbolos não terminais "só podem aparecer uma vez"
+
+Concatenação: ligar o fim da primeira ao inicio da outra
+
+Converter GR em ER:
+	decompor
+	cada nó terminal é uma expressão do tipo S1 -> a por exemplo
+	Ir juntando os nós
+
+Converter ER em GR:
+	acrescentar £ no inicio e no fim
+	ir agrupando as expressões até ficar só com uma expressão 
+
+Conversao de uma ER num AF:
+	Decompor ER
+	Automato primitivo ex: X -> abc -> Y 
+	indo acrescentando as diferentes camadas da decomposição
+
+Equivalência AFD em AFND:
+	criar estados que podem sair do AFND
+	nem todos são necessários
+	escolher necessários
+	AFD tem de ter uma única saída para cada simbolo
+
+Reunião AF:
+	Estado fora 
+	ligar com palavras vazias aos estados iniciais
+
+Concatenação AF:
+	Estado final do primeiro deixa de ser final
+ 	e liga ao inicial do segundo
+
+Fecho AF:
+	Novo estado inicial que torna-se final
+	Palavra vazia liga ao antigo inicial
+	aceitação antigos deixam de ser e passam com palavra vaiza ao inicial
+
+Complementação AF:
+	Se for AFND é mais fácil passar par AFD equivalente
+	Complementar estados de aceitação

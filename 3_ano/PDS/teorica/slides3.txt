@@ -1,0 +1,11 @@
+Padrões
+
+Arquitetura - organização estrutural do sistema
+Desenho  - Refinar subsistemas
+Idiomas -implementação usando certa linguagem
+
+GOF
+
+Creational - criação de objetos 
+Structural - lidar com composição de classes e objetos
+Behavioral - como objetos interafem e distribuem responsabilidades

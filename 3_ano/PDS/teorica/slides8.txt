@@ -1,0 +1,7 @@
+	Reflection
+
+program can see and manipulate itself
+metadata and operations to manipulate the metadata
+
+meta - self-referential
+

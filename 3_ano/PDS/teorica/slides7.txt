@@ -1,0 +1,69 @@
+	Layered Architeture
+
+most coomon
+n-tier arch
+
+separação dos problemas através de diferentes componentes
+
+Cada camada tem responsabilidades diferentes dentro da aplicação
+
+Requests (pedidos) andam de camada em camada
+
+Camadas de isolamento -> mudanças numa camada do software não têm impacto nas outras
+
+Open layers -> requests can bypass them
+
+	Event-driven
+popular em sistemas assincronos
+
+Mediator e broker
+
+MEDIATOR
+
+mediator é bom para eventos que tenham vários passos que devem seguir determinada ordem
+
+queue - mediator - channel - processor
+
+BROKER
+mensagens são enviadas para os componentes em cadeia
+Quando o tratamento de eventos é simples e não tem de seguir uma ordem especifica
+
+channel - processor
+
+	MicroKernel
+
+additional feutures as plugins
+used in operating systems
+
+core system -> main functionalities
+plugin module -> can be connected to the core system and add functionality
+
+pode ser usada com outro padrao
+first-choice as a starting point especialmente para produtos que querem adicionar novas features ao longo do tempo
+
+Facil de mudar para outra arquitetura
+
+	Microservices
+
+one or more smaller services
+APIs
+each service component is deployed as a separate unit (mais facil deployment e decoupling)
+
+não tem muitas dependencias
+pode ser desenvolvido por uma equipa pequena 
+facil de manter e testar
+	
+	Space-Based
+
+resolve problemas de concurrencia e de escalibilidade
+
+cloud
+
+replace central database with replicated in-memory datagrids
+
+processing-unit component - application components
+
+virtualized-middleware - housekeeping and communications
+
+Social media, bidding, auction
+ 

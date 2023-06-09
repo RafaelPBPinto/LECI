@@ -1,0 +1,64 @@
+	Análise de requisitos
+Comunicação com o cliente da solução da BD 
+
+	Desenho conceptual
+Modelo conceptual
+
+Mapeamento das entidades e relações do mundo real para conceitos de base de dados
+Uma visão abstrata da estrutura de base de dados que suportará os dados reais
+
+Modelo E/R
+
+Entidades fracas dependem de outras entidades - Representadas com duas linhas no retangulo
+
+	Atributos
+derivados - picotado
+
+Multivalor - duas linhs no circulo
+
+Compostos - contem mais atributos
+
+	Relacionamentos
+Grau - nº de entidades (Unária, Binária, ternária)
+Obrigatoriedade - participação da entidade na relação
+Cardinalidade - 1:N N:M ...
+
+Podem ser:
+Múltiplos (mais que um relacionamento entre entidades)
+Recursivos (Mesma entidade se relaciona consigo)
+
+	Obrigatoriedade
+Participação total (linha dupla) 
+Participação parcial (linha normal) Alternativamente notação (min,max)
+
+	Restrições de integridade
+São invariantes que a base de dados deve garantir
+Tipos:
+. Atributos
+	. cada atributo só tem um valor
+	. atributos chave são únicos
+	. atributo deve/pode ter um valor
+	. valor do atributo pode ter restrições
+. Cardinalidade
+	1:1 (um-para-um)
+	1:N (um-para-muitos)
+	N:M (muitos-para-muitos)
+. Obrigatoriedade 
+
+	Agregação
+P: relação entre entidade e outra relação
+S: Tornar relação numa entidade associativa
+Entidade Associativa - Permite associar entidades e relacionamentos
+relacão dentro de um quadrado
+
+	Especializações
+Sobreposição
+	. Disjuntas (uma entidade só pode pertencer, no máximo, a uma subclasse de especialização)
+	. Sobrepostas (uma ocorrência de entedidade genérica pode ter mais de uma especialização)
+
+Completude
+	. Total (linha dupla) (uma entidade de nível superior tem de pertencer a pelo menos uma subclasse de especialização)
+	. Parcial (linha simples) (pode não pertencer a nenhuma)
+
+
+
