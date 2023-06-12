@@ -9,11 +9,11 @@ display: 'display' expr;
 assignment: expr '<=' expr;
 
 expr returns[boolean isVariable, boolean isText]:
-        'reduce' expr               # ExprReduce
-    |   'read' expr                 # ExprRead
+        'read' expr                 # ExprRead
+    |   sign=('-'|'+') expr         # ExprUnary
     |   expr op=('*'| ':') expr     # ExprMulDiv
     |   expr op=('-'|'+') expr      # ExprAddSub
-    |   sign=('-'|'+') expr         # ExprUnary
+    |   'reduce' expr               # ExprReduce
     |   '(' expr ')'                # ExprParentesis
     |   fraction                    # ExprFraction
     |   ID                          # ExprID
