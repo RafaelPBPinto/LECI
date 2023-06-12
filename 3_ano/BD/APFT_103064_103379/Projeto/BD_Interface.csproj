@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{842B07EF-5CD1-4140-8BFB-68568C2E467B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BD_Interface</RootNamespace>
+    <AssemblyName>BD_Interface</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BDProxy.cs" />
+    <Compile Include="Admin_Esc_Fornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Esc_Fornecedores.Designer.cs">
+      <DependentUpon>Admin_Esc_Fornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_new_Trabalhador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_new_Trabalhador.Designer.cs">
+      <DependentUpon>Admin_new_Trabalhador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_ad_quant_to_peca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_ad_quant_to_peca.Designer.cs">
+      <DependentUpon>Admin_ad_quant_to_peca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_add_nova_peca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_add_nova_peca.Designer.cs">
+      <DependentUpon>Admin_add_nova_peca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Trabalho_Feito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Trabalho_Feito.Designer.cs">
+      <DependentUpon>Admin_Trabalho_Feito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Trabalho_por_Trabalhador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Trabalho_por_Trabalhador.Designer.cs">
+      <DependentUpon>Admin_Trabalho_por_Trabalhador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrabalhosPendentes.cs" />
+    <Compile Include="Trabalhador_Pecas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabalhador_Pecas.Designer.cs">
+      <DependentUpon>Trabalhador_Pecas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabalho_View.cs" />
+    <Compile Include="Despesa.cs" />
+    <Compile Include="Admin_Trabalhos_Pendentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Trabalhos_Pendentes.Designer.cs">
+      <DependentUpon>Admin_Trabalhos_Pendentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Pedido_de_Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Pedido_de_Material.Designer.cs">
+      <DependentUpon>Admin_Pedido_de_Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Historico_de_Trabalhos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Historico_de_Trabalhos.Designer.cs">
+      <DependentUpon>Admin_Historico_de_Trabalhos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Stock.Designer.cs">
+      <DependentUpon>Admin_Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_EscPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_EscPedido.Designer.cs">
+      <DependentUpon>Cliente_EscPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_PedConst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_PedConst.Designer.cs">
+      <DependentUpon>Cliente_PedConst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_add_trabalhador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_add_trabalhador.Designer.cs">
+      <DependentUpon>Admin_add_trabalhador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabalhador_Pedido_de_Material.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabalhador_Pedido_de_Material.Designer.cs">
+      <DependentUpon>Trabalhador_Pedido_de_Material.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabalhador_Trabalhos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabalhador_Trabalhos.Designer.cs">
+      <DependentUpon>Trabalhador_Trabalhos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabalhador_cc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabalhador_cc.Designer.cs">
+      <DependentUpon>Trabalhador_cc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fornecedor.cs" />
+    <Compile Include="Trabalhador.cs" />
+    <Compile Include="Peca.cs" />
+    <Compile Include="PedidoMaterial.cs" />
+    <Compile Include="Trabalho.cs" />
+    <Compile Include="PedidoTrabalho.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="Maquina.cs" />
+    <Compile Include="Cliente_Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_Inicio.Designer.cs">
+      <DependentUpon>Cliente_Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_PedManu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_PedManu.Designer.cs">
+      <DependentUpon>Cliente_PedManu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_Maquinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_Maquinas.Designer.cs">
+      <DependentUpon>Cliente_Maquinas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_Historico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_Historico.Designer.cs">
+      <DependentUpon>Cliente_Historico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Inicio.Designer.cs">
+      <DependentUpon>Admin_Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Pedidos.Designer.cs">
+      <DependentUpon>Admin_Pedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente_Empresa.Designer.cs">
+      <DependentUpon>Cliente_Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inicio.Designer.cs">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Admin_Trabalhadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_Trabalhadores.Designer.cs">
+      <DependentUpon>Admin_Trabalhadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Admin_add_nova_peca.resx">
+      <DependentUpon>Admin_add_nova_peca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_add_trabalhador.resx">
+      <DependentUpon>Admin_add_trabalhador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Historico_de_Trabalhos.resx">
+      <DependentUpon>Admin_Historico_de_Trabalhos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Inicio.resx">
+      <DependentUpon>Admin_Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_new_Trabalhador.resx">
+      <DependentUpon>Admin_new_Trabalhador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_EscPedido.resx">
+      <DependentUpon>Cliente_EscPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_Historico.resx">
+      <DependentUpon>Cliente_Historico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_Inicio.resx">
+      <DependentUpon>Cliente_Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_Maquinas.resx">
+      <DependentUpon>Cliente_Maquinas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_PedManu.resx">
+      <DependentUpon>Cliente_PedManu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Trabalhadores.resx">
+      <DependentUpon>Admin_Trabalhadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Pedidos.resx">
+      <DependentUpon>Admin_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_Empresa.resx">
+      <DependentUpon>Cliente_Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Trabalhos_Pendentes.resx">
+      <DependentUpon>Admin_Trabalhos_Pendentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Pedido_de_Material.resx">
+      <DependentUpon>Admin_Pedido_de_Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Stock.resx">
+      <DependentUpon>Admin_Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cliente_PedConst.resx">
+      <DependentUpon>Cliente_PedConst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Esc_Fornecedores.resx">
+      <DependentUpon>Admin_Esc_Fornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_ad_quant_to_peca.resx">
+      <DependentUpon>Admin_ad_quant_to_peca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Trabalho_Feito.resx">
+      <DependentUpon>Admin_Trabalho_Feito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin_Trabalho_por_Trabalhador.resx">
+      <DependentUpon>Admin_Trabalho_por_Trabalhador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabalhador_Pecas.resx">
+      <DependentUpon>Trabalhador_Pecas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabalhador_Pedido_de_Material.resx">
+      <DependentUpon>Trabalhador_Pedido_de_Material.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabalhador_Trabalhos.resx">
+      <DependentUpon>Trabalhador_Trabalhos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabalhador_cc.resx">
+      <DependentUpon>Trabalhador_cc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inicio.resx">
+      <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

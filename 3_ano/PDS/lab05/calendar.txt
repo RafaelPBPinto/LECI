@@ -1,0 +1,8 @@
+Padrões:
+
+São utilizadas constantes para representar os diferentes campos da data e hora em "private static final String[] FIELD_NAME", exemplo dessas constantes são "YEAR", "DAY_OF_MONTH", "MINUTE".
+
+A classe java.util.Calendar usa métodos getter e setter para obter e definir valores para os campos da data e hora.
+
+É usado o padrão Factory Method para criar objetos Calendar. Por exemplo o método estático getInstance() retorna uma instância de Calendar para o local e fuso de horário do sistema. 
+Este padrão permite que a classe Calendar crie objetos Calendar para diferentes calendários, sem precisar conhecer os detalhes de implementação dos mesmos. 
