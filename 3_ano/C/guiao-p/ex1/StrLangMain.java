@@ -8,6 +8,10 @@ import org.antlr.v4.runtime.tree.*;
 public class StrLangMain {
    public static void main(String[] args) {
       try {
+         if (args.length == 0) {
+            System.err.println("Usage: java StrLangMain <input_file>");
+            System.exit(0);
+         }
          Scanner sc = new Scanner(new File(args[0]));
          String lineText = null;
          int numLine = 1;
