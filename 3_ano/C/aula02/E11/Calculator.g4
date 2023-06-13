@@ -1,22 +1,30 @@
 grammar Calculator;
 
-program: stat* EOF;
+program: statement* EOF;
 
-stat: (assign | expr) NEWLINE;
+statement: assignment | expr;
 
-assign: VAR '=' expr;
+assignment returns[List<String> result]: expr '=' expr;
 
-expr: 
-        op=('+'|'-') NUMBER         # ExprUnary
-    |   '{' WORD (',' WORD)+'}'     # ExprSetWords
-    |   '{' NUMBER (',' NUMBER)+'}' # ExprSetNumbers
-    |   WORD                        # ExprWord
-    |   NUMBER                      # ExprNumber
+expr returns[List<String> result, boolean isVariable]:
+        expr '\\' expr      # ExprDif
+    |   expr '&' expr       # ExprInterception
+    |   expr '+' expr       # ExprUnion
+    |   '(' expr ')'        # ExprParentesis
+    |   conjunto            # ExprConjunto
+    |   VARIABLE            # ExprVariable
     ;
 
-VAR: [A-Z_]+;
+conjunto returns[List<String> set]: '{' (wordSeq | numberSeq)? '}';
+
+wordSeq returns[List<String> words]: WORD (',' WORD)*;
+
+numberSeq returns[List<String> numbers]: number (',' number)*;
+
+number: sign=('-'|'+')? LEXER_NUMBER;
+
+VARIABLE: [A-Z]+;
 WORD: [a-z]+;
-NUMBER: [1-9]+;
-NEWLINE: '\n';
-WS: [ \t\r]+ -> skip;
+LEXER_NUMBER: [0-9]+;
+WS: [ \r\n\t] -> skip;
 COMMENT: '--' .*? '\n' -> skip;
