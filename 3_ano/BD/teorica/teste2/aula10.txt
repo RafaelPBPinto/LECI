@@ -1,0 +1,181 @@
+	SQL PROGRAMMING
+
+Batch -> Grupo de uma ou mais inst. sql que constiutem uma unidade logica
+
+Não são Transações
+
+GO n - executa a batch n vezes
+
+Terminado a batch são eliminadas todas as cenas temporarias
+
+Algumas inst. são unicas na batch:
+	CREATE PROCEDURE, etc
+
+Variáveis
+
+DECLARE -> declaração
+SET -> atribuir valor
+
+SELECT var = value FROM table WHERE ... -> atribuição de um valor numa inst.
+
+	Controlo de fluxo	
+BEGIN ... END -> {...}
+IF..ELSE
+WHILE
+CASE ... WHEN ... THEN
+
+	Tabelas Temporárias
+Dois tipos:
+
+Temporárias Locais 
+	- sinalizadas com # antes do nome
+	- criadas em tempdb
+	- só visíveis só na sesão que as criou e no level em que são criados e todos os inner level
+	- eliminadas quando o proc ou func termina
+	- podem ser eliminadas com drop tambem
+
+Temporárias Globais 
+	- sinalizadas com ## anres do nome
+	- têm um scope maior do que as anteriores
+		- visíveis para outras sessões
+		- eliminadas quando a ultima sessão desconecta
+
+
+	Tabelas como variáveis
+parecido com as temp locais
+	diferença não estão visiveis em inner levels
+	podem ser passados como parametros
+	Declaram-se como variaveis e existem em tempdb
+
+	Limitações
+		-> desaparece quando a batch, proc ou func chega ao fim
+		-> não permitem chaves estrangeiras e check, triggers
+
+
+	Cursor 
+-> permite percorrer sequencilamente tuplos de um SELECT
+
+-> Duas abordagens:
+	-> Set-based (AR)-> mais rápidas do que cursores (Apanha tudo de uma vez)
+	-> Cursor operation (um a um)
+
+SQL SERVER os cursors são server-side
+
+
+Onde se deve usar cursores?
+-> iterar por SPs
+-> iterar sobre DDl code (criar tabelas)
+-> somatórios
+-> dados que dependem do tempo (perceber acontecimentos de evnentos)
+
+	Stored Procedures
+-> batch armazenada com um nome
+-> SQL SERVER não tem de recompilar o código cada vez que se chama a sp
+-> Guardada em memoria cache na primeira vez que são executados
+
+Pode ter:
+-> parâmetros de entrada
+-> ter valor de retorno (não obrigatório)
+-> Devolver tuplo
+
+Mais valias
+-> extensibilidade: abstração entre base de dados e interface
+-> performance: fastest possible sql server code
+-> usability: mais facil de usar do que escrever sempre o codigo
+-> integridade de dados: as sps criadas por um DBdev são menos propensos a erros 
+-> Segurança: fechar tabelas para serem só acessados por sps
+
+
+Tipos:
+-> System sp: 
+	-> começa com sp_
+	-> criados na Master database
+	-> podem ser utilizados em qualquer db
+		usados normalmente por sysadmins
+-> Local sp:
+	-> definidas numa db local
+	-> Nome livre mas recomenda-se uma normalização por parte do utilizador
+
+parametros de saida devem ser especificados previamente
+
+	T-SQL Error Handling
+@@error - retorna inteiro com o código de erro da ultima inst se 0 - sucesso
+@@rowcount - permite saber quantos tupls foram afectados por determinada inst.
+
+	T-SQL RaiseError
+RAISERROR (message or number, severity, state, optional arguments)
+
+Para cifrar Sps colocar WITH ENCRYPTION antes do AS
+
+	User Defined Functions (UDF)
+tem sempre de retornar algo
+
+Vantagens
+Benificios identicos aos Sps
+-> Utilizados para incorporar logica complexa dentro de uma consulta
+-> Oferecem os mesmos beneficios das views
+	-> Acrescenta o facto de aceitar parametros de entrada
+-> Criação de novas funções contendo expressões complexas
+
+SQL SERVER 3 tipods de UDFs:
+. Escalares
+	-> aceitam multiplos parametros
+	-> retornam um unico valor
+	-> usadas em qualquer expressão SQL
+	
+	-> determinista
+	-> não permite updates à db ou invocar DBCC
+	-> não permite devolver table vars, cursor, binarios
+	-> não permite trycatch ou raiserror
+	-> recursividade limitada a 32 niveis
+
+. Inline table-valued
+	-> similares a views
+	-> wrapers de Select
+	-> aceita parâmetros de entrada
+
+. Multi-statement table-valued functions
+	-> Escalares +  Inline table-valued
+	-> Cria table variable, introduz tuplos e retorna (esta tabela pode ser usada num SELECT)
+
+
+	TRIGGER
+->Tipo especial de SP que é executado em determinados eventos associadas à manipulação de dados
+
+->Há dois tipos de trigger: DML e DDL. Só vamos ver DML
+Quando ocrro uma das ações previstas, os triggers são disparados
+
+->EM SQL os triggers são disparados uma vez por cada operação de modificação. Não por tuplo
+
+Estendem duração de transação
+
+Dois tipos de DML triggers:
+	-> instead of
+		-> apenas um por tabela
+		-> não é executada a ação associada
+		-> a transação para depois do data type check
+		-> pode contornar o problema de integridade mas não de nulidade, tipo de dados e identidade das colunas
+	-> after
+		-> pode haver vários na mesma tabela
+		-> occorre antes do commit e pode dar rollback
+		-> ocorre depois de todos os constraints (não corrige erros de dados)
+		-> pode assumit que os dados passaram todas a verificações de integridade
+
+
+Podem ser Enabled or Disabled
+
+Usar:
+	-> instead of -> quando há elevada prob de rollback e pretendemos que outra logica seja aplicada
+	-> after -> integridade referencial, assegurar regras, efetuar auditorias aos dados, atualizar campos calculados
+
+	Tabelas Inserted e Deleted
+-> Read-only
+-> scope limitado (Sps invocados pelo trigger não as veem)
+-> apenas visiveis dentro do trigger usado
+
+Num trigger não é permitido
+-> create, alter, drop
+-> reconfigure
+-> restore db or log
+-> disk resize
+-> disk init
