@@ -101,12 +101,7 @@ public class Interpreter extends FracLangBaseVisitor<String> {
       String[] splitFrac1 = frac1.split("/");
       String[] splitFrac2 = frac2.split("/");
 
-      int numerator1;
-      if (splitFrac1[0].charAt(0) == '-'){
-         numerator1 = - Integer.parseInt(splitFrac1[0].replace("-", ""));
-      } else {
-         numerator1 = Integer.parseInt(splitFrac1[0]);
-      }
+      int numerator1 = Integer.parseInt(splitFrac1[0]);
       int denominator1;
       if (splitFrac1.length > 1) { 
          denominator1 = Integer.parseInt(splitFrac1[1]);
@@ -115,12 +110,7 @@ public class Interpreter extends FracLangBaseVisitor<String> {
       }
       Fraction fraction1 = new Fraction(numerator1, denominator1);
 
-      int numerator2;
-      if (splitFrac2[0].charAt(0) == '-'){
-         numerator2 = - - Integer.parseInt(splitFrac2[0].replace("-", ""));
-      } else {
-         numerator2 = Integer.parseInt(splitFrac2[0]);
-      }
+      int numerator2 = Integer.parseInt(splitFrac2[0]);
       int denominator2;
       if (splitFrac2.length > 1) { 
          denominator2 = Integer.parseInt(splitFrac2[1]);
@@ -157,13 +147,8 @@ public class Interpreter extends FracLangBaseVisitor<String> {
       String[] splitFrac1 = frac1.split("/");
       String[] splitFrac2 = frac2.split("/");
 
-      int numerator1;
+      int numerator1 = Integer.parseInt(splitFrac1[0]);
       int denominator1;
-      if (splitFrac1[0].charAt(0) == '-'){
-         numerator1 = - Integer.parseInt(splitFrac1[0].replace("-", ""));
-      } else {
-         numerator1 = Integer.parseInt(splitFrac1[0]);
-      }
       if (splitFrac1.length > 1) { 
          denominator1 = Integer.parseInt(splitFrac1[1]);
       } else {
@@ -171,13 +156,8 @@ public class Interpreter extends FracLangBaseVisitor<String> {
       }
       Fraction fraction1 = new Fraction(numerator1, denominator1);
 
-      int numerator2;
+      int numerator2 = Integer.parseInt(splitFrac2[0]);
       int denominator2;
-      if (splitFrac2[0].charAt(0) == '-'){
-         numerator2 = - Integer.parseInt(splitFrac2[0].replace("-", ""));
-      } else {
-         numerator2 = Integer.parseInt(splitFrac2[0]);
-      }
       if (splitFrac2.length > 1) { 
          denominator2 = Integer.parseInt(splitFrac2[1]);
       } else {
@@ -278,13 +258,8 @@ public class Interpreter extends FracLangBaseVisitor<String> {
          fraction = getValue(fraction);
       }
       String[] splitFrac = fraction.split("/");
-      int numerator;
+      int numerator = Integer.parseInt(splitFrac[0]);
       int denominator;
-      if (splitFrac[0].charAt(0) == '-'){
-         numerator = - Integer.parseInt(splitFrac[0].replace("-", ""));
-      } else {
-         numerator = Integer.parseInt(splitFrac[0]);
-      }
       if (splitFrac.length > 1) { 
          denominator = Integer.parseInt(splitFrac[1]);
       } else {
