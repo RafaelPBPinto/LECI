@@ -1,0 +1,51 @@
+1 - V
+2 - V (check option garante que os inserts estão de acordo com check da view)
+3 - F (mecanismos do tipo otimista parte do principio que as interferencias são raras)
+4 - V
+5 - F (na leitura não há conflito. Apenas na escrita ou atualização)
+6 - F (SPs não podem mas UDFs podem)
+7 - F (quando são efetuadas inserções)
+8 - V
+9 - V
+10 - F (contem os valores da db antes do update)
+11 - V
+12 - F (Escalar pode)
+13 - V
+14 - F (uma vez por cada operação)
+15 - V
+16 - F (devem ser usadas SPs ou SQL parametrizado e validar entrada de dados)
+17 - V
+18 - V (Em SQL Server, unique aceita um valor null mas não vários)
+19 - F (quantos tuplos foram afetadas)
+20 - F (SET TRANSACTION ISOLATION LEVEL <level>)
+
+21. a) Atomicidade <=> Tudo ou Nada
+
+	i. Eliminar os dependentes do funcionário
+	ii. Se supervisor de outros funcionários, funcionários ficam sem supervisor
+	iii. Se gestor de departamentos, erro e rollback
+	iv. Se associado a projetos, deve ser substituido pelo gestor de departamento para qual trabalha
+
+A - F (deve primeiro eliminar referências antes de eliminar func. da tabela Employee)
+B - V? (talvez usando NOT NULL no gestor de departamento e ON DELETE CASCADE para ii.)
+C - F (inserted ia estar vazio)
+D - F
+E - F 
+F - F? (Ideal é um trigger)?
+G - V
+
+b)
+
+	. Pesquisar os funcionários por Ssn ou conjunto Fname, Lname
+	. Pesquisar departamentos por DName ou Dnumber
+	. Saber nome de projetos e nhoras para os quais um determinado funcionário trabalha
+	. Obter salário médio dos funcionários por género e Dlocation
+
+A - V (chave estrangeira => nonclustered)
+B - V (chave estrangeira => nonclustered)
+C - F (nonclustered composto)
+D - F (nonclustered; clustered devem ser unicos e preferencialmente sequencias)
+E - V (chave estrangeira => nonclustered)
+F - F (por defeito a criação de um chave primária cria automaticamente um unique clustered index)
+G - F
+H - V

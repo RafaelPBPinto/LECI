@@ -1,0 +1,21 @@
+	Segurança
+
+Users são identificados no servidor, depois na bd e depois ainda nos objetos da db
+	Pode ter diferentes roles em diferentes niveis
+
+Tres tipos de login a nivel do servidor:
+	Windows user login
+	Membership in a Windows User Group
+	SQL Server especific login
+
+Se User pretence ao sysadmin então tem acesso total a tudo
+
+é feito um mapping entre login e user (1:N)
+
+Um login pode ter vários users associados (um por DB)
+
+Um login pode pertencer a mais que um grupo (server roles)
+
+Todos os users pertencem ao public
+
+As permissões de objetos são atribuidas com os comandos grant, revoke e deny

@@ -1,0 +1,27 @@
+1-V
+2-V
+5-V
+
+6-F (permite saber o nome das tabelas)
+7-F
+8-V
+
+9-V
+10-V
+11-F (nas instruções de insert)
+12-F?
+
+14-V
+15-V
+
+17-V (Usa-se o HAVING)
+18-V
+20-F (Multi statement)
+
+21-F
+22-F
+24-V
+
+25-V? (rollback até ao try)
+26-V
+28-F? (é o último tuplo) slide 10-p10

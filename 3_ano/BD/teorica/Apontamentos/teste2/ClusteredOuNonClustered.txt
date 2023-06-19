@@ -1,0 +1,12 @@
+	Escolher um Clustered Index
+
+-> Chave primária por defeito já o é
+-> Evitar chaves com alta probabilidade de criar page split
+-> Chaves pequenas são preferíveis
+-> Sequenciais
+
+	Escolher um non-clustered Index
+
+-> Atributos que aparecem frequentemente nas clausulas WHERE (pesquisas)
+-> Chaves Estrangeira
+-> Consultas ordenadas

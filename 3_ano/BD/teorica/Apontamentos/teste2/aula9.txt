@@ -1,0 +1,81 @@
+	Indexes
+estruturas de dados que oferecem uma segunda forma mais rápida de acesso aos dados
+
+Vantagem -> Melhora os tempos de consulta
+Desvantagem -> pode aumentar o volume de dados armazenado e o tempo das inserções, atualizações e remoções de tuplos (aumenta overhead)
+
+Podemos:
+-> indexar qualquer atributo da relação
+-> criar multiplos indices sobre atributos distintos
+-> criar indices com vários atributos
+
+Atributos indexados -> Index Key
+
+Indices -> têm um valor ordenado
+	-> têm um ponteiro para a sua localização: 
+		-> pode ser não denso (Inicio da pag)
+		-> pode ser denso (offset do proprio tuplo na pagina)
+
+indices também são guardados em páginas (tal como os tuplos de uma relação)
+
+	Tipos Genéricos
+
+Single-Level Ordered	-> estruturas de um único nível
+			-> armazena valor e localização (ponteiro para estrutura fisica)
+			-> Índices ordenados (palavra -pagina)
+			-> pesquia binária -> log2bi
+
+
+Tipos de SLO	-> Primary - indexa um atributo chave; só um
+		-> Clustered - indexa atributo que pode ter valores repetidos; atributos estão agrupados; só um
+		-> Secondary - indexa chave candidata ou não chave; pode haver vários deste tipo
+
+
+MultiLevel -> vários níveis de indexação
+logfobi
+fo -> Fan out -> geralmente > 2
+
+
+	Árvore de pesquisa
+p-1 valores e p ponteiros
+
+	Balenceada
+
+AP balenciada -> a distância de qualquer folha ao nó raiz for sempre a mesma
+
+As operações de inserção e remoção são feitas segundo um algoritmo que mantém a árvore sempre equilibrada
+
+ùtil para indices multi-level
+permite uniformizar os tempos de pesquisa
+
+
+SQL não normaliza índices
+
+CREATE INDEX abc ON xyz(attr)
+DROP INDEX abc
+
+	Seleção de Indexes
+1. necessidade de efetuar muitas pesquisas envolvendo determinado atributo (candidato a index).
+2. perceber se determinada relação vai ter modificações frequentes de dados
+
+recomendação: utilizar um log com historico de queries e estudar o tipo de consultas
+
+Factor "Organização Física dos Dados" 
+-> pesquisa de um tuplo obriga a carregar a página toda onde ele se encontra
+-> os próprios índices também são guardados, total ou parcialmente, em páginas -> operações sobre indices também têm custos temporais
+
+tentar perceber se determinado indice obriga a carregar muitas paginas em memoria
+
+indices que necessitam de carregar poucas paginas da relação para encontrar o tuplo reduzem significativamente o tempo de pesquisa
+
+	Critérios genéricos
+. indexação das chaves da relação -> frequentemente pesquisadas 
+	-> chave unica -> só carrega uma página 
+
+. indexação de não chave pode ou não ter ganho no tempo de pesquisa
+	situações recomendadas:
+	-> tem poucos valores repetidos
+	-> relação tem o atrivuto inc«dexado do tipo clustered -> clustering -> é agrupar os valores desse atributo de forma a que ocupem o menor numero de paginas
+
+
+

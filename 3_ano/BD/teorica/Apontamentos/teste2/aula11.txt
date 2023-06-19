@@ -1,0 +1,85 @@
+	Transação
+-> unidade lógica de trabalho contendo uma ou mais operações
+-> conjunto de operações de read e write sobre a base de dados
+-> Rollback pode ser implicito -> acontece quando não passa por commit ou por rollback explicito
+
+	Estados de uma transação
+Active - Partially commited - Commited
+Active - Partially Commited - Failed - Aborted	(confirma primeiro se as atualizações foram feitas corretamente)
+Active - Failed - Aborted
+
+	Propriedades de uma transação
+ACID
+
+Atomicidade - as operações da transação ocorrem de forma atomica (ou todas commit ou todas rollback)
+Consistencia/Integridade - apos operções o estado de integridade tem de se manter
+Isolamento - sistema deve dar a cada transação a ilusão de ser unica. Transações concorrentes não interferem entre si
+Durabilidade/Persistência - efeitos permanentes e visiveis para outras transações
+
+	Controlo de concorrência
+ISOLAMENTO de transações
+	Escalonamento Serializado -> sequencia -> ineficiente
+	Escalonamento concorrente serializado -> execução concorrente mas de forma a preservar o isolamento -> mais eficiente
+
+Escalonador (Scheduler) - Responsável pela definição de escalonamentos concorrente de transações
+Problemas de escalonamento concorrente 	-> lost-update
+					-> dirty-read
+
+Tipos:
+-> Mecanismos de locking (preventivos)
+	-> Lock - variavel associada a determinado elemento da BD que de acordo com o seu valor no momento permite ou não ser acedido
+	-> os locks são libertados no fim da transação
+	-> Obriga a implementação de regras para evitar deadlocks
+
+-> Mecanismos de etiquetagem (preventivos)
+	-> atribuido etiqueta com numero sequencial de chegada ao sistema
+	-> sempre que há read ou write, marca o elemento acedido coma  etiqueta
+	-> há conflito quando:
+		-> uma transação tenta aceder a um elemento com etiqueta superior a sua (foi acedido por uma transição que começou mais tarde)
+		-> quando acontece é desfeita e reiniciada com um novo numero de etiqueta
+
+-> Métodos optimistas (optimista)
+
+	Recuperação de falhas
+Objetivo: estado da BD recuperado esteja o mais proximo possivel do momento antes da falha
+
+Escalonamento recuperavel -> se nenhuma T em E for concluida ate que todas as transações que escrevem elementos lidos em T tenham sido concluidas
+
+Escalonamento sem Abort em cascata -> Se uma T em E só puder ler elementos que tenham sido atualizados por transações que já concluíram
+
+Escalonamento Estrito -> so pode ler ou atualizar um elemento A depois de todas as transações que atualizaram A tenham sido concluidas
+
+	Backups
+-> Só pode recuparar dados até ao momento em que foi feito o backup
+
+	Transaction-Logs
+-> podemos ter várias operações sobre daods efetuadas em bfers que podem não ser guardados em disco caso ocorra uma falha do sistema
+-> O registo de logs já está em disco, pelo que pode ser utilizado para recuperação de dados caso estes não sejam guardados.
+
+Backups+transaction logs recupera: disco, transação, sistema
+
+
+Recuperação de falha de disco: é o mais grave pois obriga à recuperação total da bd
+	1. Fazer restore backup
+	2. Fazer rollfoward (after images do transaction log)
+
+Recuperação Falha de transação: usar before image do transaction log
+
+Recuperação de falha de sistema: erro no SO ou SGBD
+	1. Rollback before-images 
+	2. Rollfoward com as after-images 
+Dificuladade: detetar até onde desfazer as transações
+
+	Rollback até que ponto?
+-> até ao momento em que transaction log e bd estão sincronizados
+Solução segura: ultimo backup
+
+Outra solução Checkpoint: Marca no log os omentos em que buffers são escritos para o disco
+
+Savepoint: Permite reconstruir bd ate esse ponto
+	é interno à transação 
+	
+	Custos - Recuperação de falhas
+-> Maior numero de acessos ao disco
+-> Maiores necessidades de armazenamento
+-> Sobrecarga de processamento

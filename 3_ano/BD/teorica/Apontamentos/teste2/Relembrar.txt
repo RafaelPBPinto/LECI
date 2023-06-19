@@ -1,0 +1,122 @@
+	Relembrar
+
+	Views
+-> views -> CHECK OPTION -> verifica condições do WHERE nas operações de escrita
+-> view updatable -> se só tiver só uma tabela base com primary key e atributos com NOT NULL e sem default value
+-> clustered -> um por relação
+-> nonclustered (tabela heap) -> vários por relação 
+
+	Escolher um Clustered Index (https://stackoverflow.com/questions/18304376/sql-server-when-to-use-clustered-vs-non-clustered-index)
+
+-> Chave primária por defeito já o é
+-> Evitar chaves com alta probabilidade de criar page split
+-> Chaves pequenas são preferíveis
+-> Sequenciais
+
+	Escolher um non-clustered Index (https://stackoverflow.com/questions/18304376/sql-server-when-to-use-clustered-vs-non-clustered-index)
+
+-> Atributos que aparecem frequentemente nas clausulas WHERE (pesquisas)
+-> Chaves Estrangeira
+-> Consultas ordenadas
+
+	Normalização
+1NF 	-> sem atributos multivalor (atributos são atómicos)
+	-> sem nested relations
+
+2NF	-> está na 1NF
+	-> sem dependencias parciais (depender apenas de parte da chave)
+
+3NF	-> está na 2NF
+	-> sem dependencias transitivas (attr. não chave depende de outro attr. não chave)
+
+BCNF	-> está na 3NF
+	-> todos atributos dependem da chave, de toda a chave e nada mais
+
+	INDEXES
+-> page-split -> quando é efetuado inserções e página está cheia
+-> por defeito -> chave primária -> unique clustered index
+-> por atributo -> atributo unique não chave primária -> unique nonclustered index
+-> include e filter -> só pode ser usado nos nonclustered
+-> fillfactor:
+	-> 65%-85% - inserções no meio
+	-> 100% - inserções sequenciais
+-> pad index -> ON - aplica-se aos nós folha
+		OFF - não se aplica aos nós folha
+
+	SQL Programming
+-> @@error -> retorna um inteiro com código de erro da ultima inst. (0-sucesso)
+-> @@rowcount -> retorna wuantos tuplos foram afetados
+-> @@fetchstatus -> 0- OK; -1- end or fail; -2- fail or tuple not available)
+-> Select to variable -> se tiver mais que um tuplo fica só o ultimo
+
+	CURSOR
+-> permite percorrer sequecialmente os tuplos retornados por determinada query.
+-> Set-based (usa AR) é mais rápida
+-> cursor -> pesca á linha
+-> set-based -> pesca á rede
+
+	STORED PROCEDURES
+-> return 0 ou mais values
+-> input e output parametros
+-> não podem ser usadas em SELECTs/WHERE/HAVING
+-> podem chamar outras SPs
+-> handling de excpeções 
+-> podem usar transações
+-> podemos passar valor para uma variável:
+	DECLARE @ret as int;
+	exec @ret=Sp 'abc';
+
+	UDFs
+-> return um valor (escalar ou table)
+-> apenas input parametros
+-> podem ser usadas em SELECTs/WHERE/HAVING
+-> não pode chamar Sps
+-> não faz handling de excpeções
+-> não pode fazer transactions
+-> escalar -> retirna um valor -> pode ser usada em expressão T-SQL (check constraint)
+-> inline table-valued -> wrapper do select -> retorna tabela
+-> multi-statement table-valued -> retorna tabela variavel -> pode conter codigo complexo
+-> podemos passar valor para uma variável:
+	DECLARE @variable_name data_type;
+	SELECT @variable_name = udf_name(parameters);
+
+	TRIGGERS
+-> tipo After -> pode ter vários por tabela -> usar se prob de rollback for pequeno
+-> tipo Instead of -> apenas um por tabela -> ação associada não é executada, mesmo se o corpo do trigger estiver em branco -> usar se prob de rollback for alta e pretendemos usar outra lógica
+-> tabela inserted -> vazia na op de DELETE -> na op de UPDATE contem os tuplos (afetados) depois do UPDATE
+-> tabela deleted -> vazia na op de INSERT -> na op de UPDATE contem os tuplos (afetados) antes do UPDATE
+-> evitar integridade referencial declarativa
+
+	TRANSAÇÂO
+-> AIIP (Atomicidade / Integridade / Isolamento / Persistencia)
+-> Atomicidade -> tudo ou nada
+-> integridade -> após operações o estado de integridade tem de se manter
+-> Isolamento -> Ilusão de ser unica (escalonamento)
+-> Persistência -> efeitos permanentes e visiveis para outras transações
+-> Pode-se definir o nivel de isolamento (SET TRANSACTION ISOLATION LEVEL <level>)
+-> Rollback implicito -> transação não termina como esperado
+
+	Concorrência
+-> mecanismos do tipo optimista parte do prinicipio que as interferencias são raras
+-> locking -> lock/unlock do objeto (pode ser só lock do read ou write) -> se tiver lock não Transação não entra
+-> etiquetagem -> cada transação tem uma etiqueta -> objeto fica com etiqueta da T -> se etiqueta for maior que a da T (foi acedido por T que começou mais tarde) então T não pode usar objeto e recomeça
+-> escalonamento concorrente tem problemas se:
+	-> ops de transações diferentes acedem ao mesmo elemento e pelo menos uma das operações é write
+-> dirty-read -> T1 escreve objeto. T2 acede a esse objeto já modificado. T1 falha e faz rollback
+-> lost-update -> T1 grava objeto que entretanto tinha sido lido e usado em T2.
+
+	Recupreção de dados
+-> Backup -> contempla toda a base de dados
+-> Transaction Log	-> Regista todas as operações realizadas na BD
+			-> before-image: antes de transaction (usada na falha de transação)
+			-> after-image: depois da transaction (usada na falha do disco após buscar ultimo backup)
+			-> falha do sistema usa as duas: Rollback com bi e rollfoward com ai.
+-> Checkpoint 	-> marca que representa o momento em que o SGBD escreve para o disco o Transaction Log
+		-> ponto de sincronismo em disco entre transaction log e base de dados
+-> Savepoint	-> Permite reconstruir a transação até esses pontos.
+
+	Segurança
+-> Vários DB users mapeados para o mesmo login
+-> SQL DCL:
+	-> DENY e GRANT podem ser anulados com REVOKE
+	-> DENY sobrepõe-se ao GRANT

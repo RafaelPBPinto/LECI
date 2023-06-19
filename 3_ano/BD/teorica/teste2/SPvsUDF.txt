@@ -1,7 +1,0 @@
-SP					UDF
-return 0+				return 1 (escalar ou table)
-input/output param			input param
-cannot be used in SELECT/WHERE/HAVING 	can be used in SELECT/WHERE/HAVING
-pode chamar SP				não pode
-excpetion handling			não pode
-transactions				não pode

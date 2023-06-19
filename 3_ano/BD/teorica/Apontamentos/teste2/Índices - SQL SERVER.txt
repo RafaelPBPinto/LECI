@@ -1,0 +1,72 @@
+	Índices - SQL SERVER
+
+Dois tipos de índices: (Ambos implementados com B-tree)
+
+clustered:
+-> os nós folha contêm os próprios dados da relação
+-> a tabela está ordenada pelo próprio índice
+	só exite um por relação
+-> Analogia: Agenda de contactos de telefone
+
+non-clustered
+-> indices apontam para a tabela base
+	que pode ser clustered ou non-clustered
+-> podemos ter vários numa relação
+-> Analogia: Índice de um livro
+
+	B-Tree Page Split
+-> ordenados pelo key index
+-> inserts, updates e deletes afetam dados
+
+-> insert em página cheia
+	-> divide a pagina em duas (page-split)
+		-> cria nova pagina
+		-> copia parte dos indices para a nova pagina
+		-> reflete esta nova realidade na hierarquia para cima
+		-> insere o novo indice
+
+-> page-split é penalizador em termos de desempenho temporal
+
+	Operações de especialização
+Unique -> index key é única (não tem valores duplicados)
+	-> Por defeito, a criação de uma chave primária cria automaticamente um unique clustered index. Podendo opcionalmente mudar para non-clustered
+
+Composite -> índice com vários atributos
+	-> A ordem dos atributos importa
+
+Filtered -> Permite ustilização da cláusula WHERE no CREATE INDEX
+	-> só funciona nos non-clustered
+	-> só indexa parte dos tuplos
+
+Inclusão de Atributos num Índice (INCLUDE)
+	-> Podemos incluir non-key atributos nas folhas de um indice non-clustered (não determina a ordem)
+	-> Chamadas query cobertas
+		query em que todos os dados de que a query necessita estão no índice
+
+	-> apenas dados adicionais que se pode buscar diretamente do index sem precisar de ir à tabela fisica
+
+Heap -> unsorted -> insere no final da tabela
+Clustered table -> sorted -> insere segundo a ordem da cluster index key
+
+	Escolher Clustered ou non-Clustered
+
+Clustered	-> chave primária é por defeito clustered
+		-> evitar chaves susceptiveis de criar page splits -> IDENTITY é bom
+		-> chaves pequenas são preferíveis
+
+Non-Clustered	-> usadas para optimizar os tempos de consulta
+		-> Atributos chave estrangeira
+		-> consultas ordenadas
+
+B-Tree Tuning
+
+fill-factor -> % espaço livre
+pad indec -> ON/OFF só ff aos nós folhas ou não
+
+Utilizar fill factor próximo dos 100% se temos inserts ordenados
+65-80% se tivermos mais inserções no meio
+
+Caso o indice esteja muito fragmentado ->desfragmentar
+	REORGANIZE -> nível das folhas
+		ou
+	REBUILD with (ff=x%) -> completamente

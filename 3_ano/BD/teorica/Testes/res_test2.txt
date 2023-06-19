@@ -1,0 +1,21 @@
+1 - T
+2 - T (rows int the db before update)
+3 - F (devemos evitar restrições declarativas)
+4 - F (filter só disponivel para non-clustered)
+5 - T (escalar pode ser utilizada num check constraint)
+6 - F (inline -> retorna 1 select)
+7 - T 
+8 - F (dirty-read -> T1 altera valor e T2 lê valor mas T1 falha)
+      (lost-update -> T1 grava dado que entretanto tinha sido lido por T2 e usado numa tran)
+9 - T 
+10 - T
+11 - F
+12 - T
+13 - F
+14 - T
+15 - F
+16 - T
+17 - F (Deny se sobrepõe a Grant)
+18 - F
+19 - T
+20 - F
