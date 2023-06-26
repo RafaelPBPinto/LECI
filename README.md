@@ -1,5 +1,6 @@
 # LECI
-## Licenciatura em Engenharia de Computadores e Informática // Universidade de Aveiro
+## Licenciatura em Engenharia de Computadores e Informática  
+## Universidade de Aveiro
 
 ## Autor
 | Nº Mec.   | Name                                                     | Email                   |
