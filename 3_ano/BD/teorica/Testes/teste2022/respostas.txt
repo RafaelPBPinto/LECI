@@ -9,7 +9,7 @@
 9-V
 10-V
 11-F (nas instruções de insert)
-12-F?
+12-F
 
 14-V
 15-V
@@ -22,6 +22,18 @@
 22-F
 24-V
 
-25-V? (rollback até ao try)
+25-V
 26-V
-28-F? (é o último tuplo) slide 10-p10
+28-F (é o último tuplo) slide 10-p10
+
+29-F (4NF- sem dependencias multivalor; 5NF - sem dependencias de juncao)
+30-V
+31-V
+32-V
+
+34-V
+35-V
+36-F
+
+39-V (não é garantida melhoria em todos os casos. Exemplo muitos tuplos repetidos)
+40-F (uma vez por operação)

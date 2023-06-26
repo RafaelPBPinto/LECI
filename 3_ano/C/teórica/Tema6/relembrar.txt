@@ -1,0 +1,24 @@
+Derivar à esquerda -> N mais à esquerda expande
+Derivar à direita -> N mais à direita expande
+
+first(ABcT) -> subsituir N mais à esquerda e fazer uniao ate que se tenha só terminais à direita
+
+follow -> aplicar as regras até não dar mais
+	atenção -> se first da direita tiver vazio então regra 4
+
+predict(S->ABC) -> first(ABC) a não ser que first(ABC) tenha palavra vazia
+		senão é first(ABC) - vazio união follow(S)
+
+eliminar recursividade à esquerda: criar novo estado e fechar com recursividade à direita
+
+eliminar ambiguidade -> por evidencia e criar novo estado.
+
+Construir gramática -> prioridade ao contrário de antlr
+
+Tabela de decisão ascendente reduce nas colunas do follow dessa redução
+
+Criar conjunto -> se ponto estiver atrás de N temos de expandir o N e união
+
+&(estado de onde vem, N) = expansão
+
+

@@ -3,21 +3,6 @@
 	Views
 -> views -> CHECK OPTION -> verifica condições do WHERE nas operações de escrita
 -> view updatable -> se só tiver só uma tabela base com primary key e atributos com NOT NULL e sem default value
--> clustered -> um por relação
--> nonclustered (tabela heap) -> vários por relação 
-
-	Escolher um Clustered Index (https://stackoverflow.com/questions/18304376/sql-server-when-to-use-clustered-vs-non-clustered-index)
-
--> Chave primária por defeito já o é
--> Evitar chaves com alta probabilidade de criar page split
--> Chaves pequenas são preferíveis
--> Sequenciais
-
-	Escolher um non-clustered Index (https://stackoverflow.com/questions/18304376/sql-server-when-to-use-clustered-vs-non-clustered-index)
-
--> Atributos que aparecem frequentemente nas clausulas WHERE (pesquisas)
--> Chaves Estrangeira
--> Consultas ordenadas
 
 	Normalização
 1NF 	-> sem atributos multivalor (atributos são atómicos)
@@ -32,16 +17,36 @@
 BCNF	-> está na 3NF
 	-> todos atributos dependem da chave, de toda a chave e nada mais
 
+4NF	-> sem dependencias multivalor
+
+5NF	-> sem dependencias de junção
+
 	INDEXES
 -> page-split -> quando é efetuado inserções e página está cheia
+-> clustered -> um por relação
+-> nonclustered (tabela heap) -> vários por relação 
 -> por defeito -> chave primária -> unique clustered index
--> por atributo -> atributo unique não chave primária -> unique nonclustered index
+-> por defeito -> atributo unique não chave primária -> unique nonclustered index
+
 -> include e filter -> só pode ser usado nos nonclustered
 -> fillfactor:
 	-> 65%-85% - inserções no meio
 	-> 100% - inserções sequenciais
 -> pad index -> ON - aplica-se aos nós folha
 		OFF - não se aplica aos nós folha
+
+	Escolher um Clustered Index (https://stackoverflow.com/questions/18304376/sql-server-when-to-use-clustered-vs-non-clustered-index)
+
+-> Chave primária por defeito já o é
+-> Evitar chaves com alta probabilidade de criar page split
+-> Chaves pequenas são preferíveis
+-> Sequenciais
+
+	Escolher um non-clustered Index (https://stackoverflow.com/questions/18304376/sql-server-when-to-use-clustered-vs-non-clustered-index)
+
+-> Atributos que aparecem frequentemente nas clausulas WHERE (pesquisas)
+-> Chaves Estrangeira
+-> Consultas ordenadas
 
 	SQL Programming
 -> @@error -> retorna um inteiro com código de erro da ultima inst. (0-sucesso)
@@ -97,6 +102,11 @@ BCNF	-> está na 3NF
 -> Rollback implicito -> transação não termina como esperado
 
 	Concorrência
+
+Escalonamento recuperavel -> concluir Ti ate que todos os Ts que escrevem variaveis lidas por Ti terminem.
+Escalonamento sem Abort em cascata -> T só pode ler elementos atualizados por transações que já concluiram
+Escalonamento Estrito -> igual acima mas para leitura e escrita
+
 -> mecanismos do tipo optimista parte do prinicipio que as interferencias são raras
 -> locking -> lock/unlock do objeto (pode ser só lock do read ou write) -> se tiver lock não Transação não entra
 -> etiquetagem -> cada transação tem uma etiqueta -> objeto fica com etiqueta da T -> se etiqueta for maior que a da T (foi acedido por T que começou mais tarde) então T não pode usar objeto e recomeça
