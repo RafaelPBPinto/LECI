@@ -1,0 +1,171 @@
+typeValue ::= [
+    "text":"String",
+    "real":"double",
+    "integer":"int",
+    "boolean":"boolean"
+]
+
+primitiveClassTypes ::= [
+    "text":"String",
+    "integer":"Integer",
+    "real":"Double",
+    "boolean":"Boolean"
+]
+
+ops ::= [
+    "*" : "*",
+    "+" : "+",
+    "-" : "-",
+    "\\" : "%",
+    "/" : "/",
+    "and" : "&&",
+    "or" : "||",
+    "<" : "<",
+    ">" : ">",
+    ">=" : ">=",
+    "<=" : "<=",
+    "=" : "==",
+    "!=" : "!=",
+    "!" : "!"
+]
+
+module(name,stat) ::= <<
+import java.util.*;
+public class <name> {
+    public static void main(String[] args) {
+        try {
+            <stats(stat)>
+        }
+        catch(Exception ex) {
+            System.out.println("Erro interno");
+        }
+    }
+}
+>>
+
+table(name,stat,header) ::= <<
+import java.util.*;
+public class <name> {
+    public <type("text")> header<initValue(header)>;
+
+    <stats(stat)>
+}
+>>
+
+invariant(name,type,lam,serr) ::= <<
+public class <name> extends Invariant\<<classPrimitiveType(type)>\>{
+    public <name>() {
+        super(<lam>,<serr>);
+    }
+
+    public <name>(<type(type)> v) {
+        super(<lam>,<serr>,v);
+    }
+
+    @Override
+    public String toString() {
+        return get().toString();
+    }
+}
+>>
+
+stats(stat) ::= <<
+<if(stat)><stat; separator="\n"><endif>
+>>
+
+args(arg,sep) ::= <<
+<arg; separator=sep>
+>>
+
+functionCall(name,class,var,args,semicolon) ::= <<
+<if(class)><class>.<endif><if(var)><var>.<endif><name>(<args(args,",")>)<if(semicolon)>;<endif>
+>>
+
+toStringFunc(stats) ::= <<
+@Override
+public <type("text")> toString() {
+    <stats(stats)>
+}
+>>
+
+print(newLine,string) ::= <<
+System.out.print<if(newLine)>ln<endif>(<string>);
+>>
+
+function(type,name,args,stat) ::= <<
+public <type> <name>(<args(args,",")>) {
+    <stats(stat)>
+}
+>>
+
+tableColumnDecl(var,type,value) ::= "public <tableColumn(type)> <var> = new Column\<>(<if(value)><value><endif>);"
+tableFormulaDecl(var,type,value) ::= "public <tableFormula(type)> <var> = new Formula\<>(<if(value)><value><endif>);"
+tableColumn(type) ::= "Column\<<classPrimitiveType(type)>>"
+tableFormula(type) ::= "Formula\<<classPrimitiveType(type)>>"
+tableArgVariable(var,type) ::= "<tableColumn(type)> <var>"
+
+assign(var,value) ::= <<
+<var> = <value>;
+>>
+
+initValue(value) ::= "<if(value)> = <value><endif>"
+classPrimitiveType(type) ::= "<if(primitiveClassTypes.(type))><primitiveClassTypes.(type)><else><type><endif>"
+type(type) ::= "<if(typeValue.(type))><typeValue.(type)><else><type><endif>"
+initClassVar(type,var) ::= "<classPrimitiveType(type)> <var>"
+initVar(type,var) ::= "<type(type)> <var>"
+
+decl(public,type,var,value) ::= <<
+<if(public)>public <endif><initVar(type,var)><initValue(value)>;
+>>
+
+exprArithm(expr1, op, expr2) ::= <<
+<expr1> <if(ops.(op))><ops.(op)><else><op><endif> <expr2>
+>>
+
+inLineConditional(cond,statTrue,statFalse) ::= "<cond> ? <statTrue> : <statFalse>"
+
+conditional(cond,statTrue,condFalse,statFalse) ::= <<
+if(<cond>) {
+    <stats(statTrue)>
+}<if(statFalse)>else <if(condFalse)>if(<condFalse>) <endif>{
+    <stats(statFalse)>
+}<endif>
+>>
+
+forLoop(var, stat, iterator) ::= <<
+for (int <iterator> = 0; <iterator> \< <var>; <iterator>++) {
+    <stats(stat)>
+}
+>>
+
+whileLoop(cond,stat) ::= <<
+while(<cond>) {
+    <stats(stat)>
+}
+>>
+
+tableRemoveInterface(tableName,args) ::= <<
+@FunctionalInterface
+public interface <tableName>Lambda {
+    boolean method(<args(args,",")>);
+}
+>>
+
+lambdaFunction(args,stat) ::= <<
+(<args(args,",")>) -> {
+    <stats(stat)>
+}
+>>
+
+tryCatch(stat,catchStat) ::= <<
+    try {
+        <stats(stat)>
+    }
+    catch(Exception ex) {
+        <stats(catchStat)>
+    }
+>>
+
+readCSV(var,file,res1,res2,res3)::=<<
+<var>.read(CSV.read(<file>, new ArrayList\<\>(Arrays.asList(new ArrayList\<\>(Arrays.asList(<res1>)), new ArrayList\<\>(Arrays.asList(<res2>)), new ArrayList\<\>(Arrays.asList(<res3>)))) ))
+>>

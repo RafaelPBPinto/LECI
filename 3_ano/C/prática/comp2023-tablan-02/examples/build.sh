@@ -1,0 +1,1 @@
+cd ../src && antlr4 -visitor *.g4 && javac TablanMain.java

@@ -22,8 +22,8 @@ c := c+1;
 println t;
 
 tt: ATable;
-tt -> "Table of names (view)";
 tt := t.name; -- tt contains a view of table referenced by t consisting only of column name
+tt -> "Table of names (view)";
 ttt: ATable;
 ttt := new(t.name); -- creates a new table copying only the column name of table referenced by t
 ttt -> "Table of names (copy)";
@@ -41,9 +41,9 @@ end;
 
 -- three alternative reads of the same table: 
 t2: ATable;
-t2 := read "list1.csv";
+t2 := read "../examples/list1.csv";
 println t2;
-t2 := read "list2.csv" using column 2 as name, column 1 as number;
+t2 := read "../examples/list2.csv" using column 2 as name, column 1 as number;
 println t2;
-t2 := read "list1.csv" using "name" as name, "number" as number;
+t2 := read "../examples/list1.csv" using "name" as name, "number" as number;
 println t2;
